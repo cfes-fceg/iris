@@ -19,15 +19,16 @@ class SessionFactory extends Factory
     {
         $stream = SessionStream::inRandomOrder()->first();
         $startDate = $this->faker->dateTime();
+        $endDate = $startDate->add(new \DateInterval('PT1H'));
 
         return [
             'title' => $this->faker->sentence,
-            'description' => $this->faker->paragraphs(2),
-            'is_active' => $this->faker->boolean(90),
+            'description' => $this->faker->paragraphs(2, true),
+            'is_published' => $this->faker->boolean(90),
             'session_stream_id' => isset($stream) ? $stream->id : null,
-            'zoom_meeting_id' => $this->faker->numerify('##########'),
+            'zoom_meeting_id' => $this->faker->numerify('#########'),
             'start' => $startDate,
-            'end' => $startDate->add(\DateInterval::createFromDateString("01:00"))
+            'end' => $endDate
         ];
     }
 }
