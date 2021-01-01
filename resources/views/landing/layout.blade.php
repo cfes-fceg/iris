@@ -19,8 +19,8 @@
 </head>
 
 <body class="gradient leading-relaxed tracking-wide flex flex-col">
-@include('landing.nav')
+@include('layouts.nav')
 @include('landing.content')
-@include('landing.footer')
+@include('layouts.footer')
 </body>
 </html>
