@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreSessionStreamRequest;
+use App\Http\Requests\SessionStream\StoreRequest;
+use App\Http\Requests\SessionStream\UpdateRequest;
 use App\Models\SessionStream;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -36,10 +37,10 @@ class SessionStreamsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreSessionStreamRequest $request
+     * @param StoreRequest $request
      * @return RedirectResponse
      */
-    public function store(StoreSessionStreamRequest $request)
+    public function store(StoreRequest $request)
     {
         SessionStream::create($request->validated());
 
@@ -47,47 +48,39 @@ class SessionStreamsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param SessionStream $sessionStream
-     * @return Response
-     */
-    public function show(SessionStream $sessionStream): Response
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
-     * @param SessionStream $sessionStream
-     * @return Response
+     * @param SessionStream $stream
+     * @return Application|Factory|View|Response
      */
-    public function edit(SessionStream $sessionStream): Response
+    public function edit(SessionStream $stream)
     {
-        //
+        return view('admin.stream.form')->with(["stream" => $stream]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param SessionStream $sessionStream
-     * @return Response
+     * @param UpdateRequest $request
+     * @param SessionStream $stream
+     * @return RedirectResponse
      */
-    public function update(Request $request, SessionStream $sessionStream): Response
+    public function update(UpdateRequest $request, SessionStream $stream): RedirectResponse
     {
-        //
+        $stream->update($request->validated());
+        return \response()->redirectToRoute('admin.streams.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param SessionStream $sessionStream
-     * @return Response
+     * @param SessionStream $stream
+     * @return RedirectResponse
+     * @throws \Exception
      */
-    public function destroy(SessionStream $sessionStream): Response
+    public function destroy(SessionStream $stream): RedirectResponse
     {
-        //
+        $stream->delete();
+        return \response()->redirectToRoute('admin.streams.index');
     }
 }

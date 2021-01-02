@@ -1,11 +1,13 @@
-<x-admin-layout title="New Stream">
-    <form method="post" action="{{ route('admin.streams.store') }}">
+<x-admin-layout :title="(isset($stream) ? 'Edit' : 'New' ). ' Stream'">
+    <form method="post"
+          action="{{ isset($stream) ? route('admin.streams.update', $stream) : route('admin.streams.store') }}">
         @csrf
-        @method('POST')
+        @method(isset($stream) ? 'PUT' : 'POST')
         <div class="bg-white rounded overflow-hidden shadow-lg p-4">
             <div class="mb-2">
                 <x-label for="title" :value="__('Title')"/>
-                <x-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required
+                <x-input id="title" class="block mt-1 w-full" type="text" name="title"
+                         :value="old('title', optional($stream)->title)" required
                          autofocus/>
                 @error('title')
                 <span>
@@ -16,7 +18,7 @@
             <div class="my-2">
                 <x-label for="zoom_meeting_id" :value="__('Zoom Meeting ID')"/>
                 <x-input id="zoom_meeting_id" class="block mt-1 w-full" type="number" name="zoom_meeting_id"
-                         :value="old('zoom_meeting_id')" required autofocus/>
+                         :value="old('zoom_meeting_id', optional($stream)->zoom_meeting_id)" required autofocus/>
                 @error('zoom_meeting_id')
                 <span>
                     {{ $message }}
@@ -25,8 +27,10 @@
             </div>
             <div class="my-2">
                 <x-label for="description" :value="__('Description')"/>
-                <x-textarea id="description" class="block mt-1 w-full" name="description" :value="old('description')"
-                            required autofocus/>
+                <x-textarea id="description" class="block mt-1 w-full" name="description"
+                            required autofocus>
+                    {{ old('description', optional($stream)->description) }}
+                </x-textarea>
                 @error('description')
                 <span>
                     {{ $message }}
