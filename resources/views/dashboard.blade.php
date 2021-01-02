@@ -1,17 +1,28 @@
 <x-app-layout>
     <!-- component -->
     <div class="flex justify-between w-2/3 mx-auto">
-        <div class="w-full lg:w-8/12">
-            <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Sessions</h1>
-            {{--<div class="flex items-center justify-between">
+        <div class="-mx-4 w-1/4 hidden lg:block">
+            @include('user-sidebar')
+        </div>
+
+        <div class="w-full lg:w-3/4">
+            <div class="flex items-center justify-between">
+                <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Sessions</h1>
                 <div>
-                    <select
-                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                        <option>Latest</option>
-                        <option>Last Week</option>
-                    </select>
+                    <label class="flex flex-row items-center">
+                        <span class="mr-2">
+                            {{ __("Stream") }}:
+                        </span>
+                        <select
+                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <option>All streams</option>
+                            @foreach(\App\Models\SessionStream::all() as $stream)
+                                <option value="{{ $stream->id }}">{{ $stream->title }}</option>
+                            @endforeach
+                        </select>
+                    </label>
                 </div>
-            </div>--}}
+            </div>
             @foreach(\App\Models\Session::all() as $session)
                 <div class="mt-6">
                     <div class="max-w-4xl px-10 py-6 bg-white rounded-lg shadow-md">
@@ -21,13 +32,13 @@
                             </span>
                             <a href="#"
                                class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-gray-500">
-                                {{ $session->stream->title }}
+                                {{ isset($session->stream) ? $session->stream->title : "All Streams" }}
                             </a>
                         </div>
                         <div class="mt-2">
-                            <a href="#" class="text-2xl text-gray-700 font-bold hover:underline">
+                            <span class="text-2xl text-gray-700 font-bold">
                                 {{ $session->title }}
-                            </a>
+                            </span>
                             <p class="mt-2 text-gray-600">
                                 {{ $session->description }}
                             </p>
@@ -69,9 +80,6 @@
                     </a>
                 </div>
             </div>
-        </div>
-        <div class="-mx-8 w-4/12 hidden lg:block">
-            @include('user-sidebar')
         </div>
     </div>
 </x-app-layout>

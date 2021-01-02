@@ -15,6 +15,10 @@ class SessionSeeder extends Seeder
      */
     public function run()
     {
+        Session::factory()->count(3)->state([
+            'session_stream_id' => null
+        ])->create();
+
         foreach(SessionStream::factory()->count(3)->create()->all() as $stream) {
             Session::factory()->count(10)->state([
                 'session_stream_id' => $stream->id

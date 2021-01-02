@@ -10,7 +10,7 @@ class CreateSessionsTable extends Migration
     {
         Schema::create('sessions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('session_stream_id');
+            $table->foreignId('session_stream_id')->nullable(true);
             $table->bigInteger('zoom_meeting_id');
             $table->string('title');
             $table->longText('description');
