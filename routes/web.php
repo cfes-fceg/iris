@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SessionsController;
+use App\Models\SessionStream;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +24,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/admin', [AdminController::class, 'index'])
-    ->middleware('auth')
-    ->name('admin.index');
+Route::group(["prefix" => "admin", "middleware" => ["auth"], "as" => "admin."], function () {
+    Route::get("/", [AdminController::class, 'index'])->name('index');
+
+    Route::resource("sessions", SessionsController::class);
+    Route::resource("streams", \App\Http\Controllers\SessionStreamsController::class);
+});
 
 require __DIR__.'/auth.php';

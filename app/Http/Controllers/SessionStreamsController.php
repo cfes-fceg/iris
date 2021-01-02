@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreSessionStreamRequest;
 use App\Models\SessionStream;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -11,32 +16,34 @@ class SessionStreamsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return Application|Factory|View|Response
      */
-    public function index(): Response
+    public function index()
     {
-        //
+        return view('admin.stream.index');
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Application|Factory|View|Response
      */
-    public function create(): Response
+    public function create()
     {
-        //
+        return view('admin.stream.form');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     * @return Response
+     * @param StoreSessionStreamRequest $request
+     * @return RedirectResponse
      */
-    public function store(Request $request): Response
+    public function store(StoreSessionStreamRequest $request)
     {
-        //
+        SessionStream::create($request->validated());
+
+        return \response()->redirectToRoute('admin.streams.index');
     }
 
     /**

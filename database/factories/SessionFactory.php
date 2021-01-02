@@ -26,7 +26,6 @@ class SessionFactory extends Factory
             'description' => $this->faker->paragraphs(2, true),
             'is_published' => $this->faker->boolean(90),
             'session_stream_id' => isset($stream) ? $stream->id : null,
-            'zoom_meeting_id' => $this->faker->numerify('#########'),
             'start' => $startDate,
             'end' => $endDate
         ];

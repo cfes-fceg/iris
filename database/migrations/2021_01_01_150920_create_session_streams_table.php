@@ -12,6 +12,7 @@ class CreateSessionStreamsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->longText('description');
+            $table->bigInteger('zoom_meeting_id');
             $table->timestamps();
         });
     }

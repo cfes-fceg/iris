@@ -19,6 +19,7 @@ class SessionStreamFactory extends Factory
         return [
             'title' => $this->faker->word,
             'description' => $this->faker->text,
+            'zoom_meeting_id' => $this->faker->numerify('#########'),
         ];
     }
 }
