@@ -15,13 +15,15 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <link rel="stylesheet" href=" {{ asset('css/style.css') }}">
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100 flex flex-col justify-between">
 
-    @include('layouts.nav')
+@include('layouts.nav')
 
-    <!-- Page Content -->
+<!-- Page Content -->
     <main>
         {{ $slot }}
     </main>
