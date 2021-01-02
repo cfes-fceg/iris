@@ -31,7 +31,7 @@ class SessionStreamsController extends Controller
      */
     public function create()
     {
-        return view('admin.stream.form');
+        return view('admin.stream.form')->with(["stream" => null]);
     }
 
     /**

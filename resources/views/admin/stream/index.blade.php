@@ -1,5 +1,4 @@
 <x-admin-layout title="Session Streams">
-    <!-- Search -->
     <x-slot name="actions">
         <x-btn-link-primary href="{{ route('admin.streams.create') }}">
             New

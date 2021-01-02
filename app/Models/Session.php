@@ -14,7 +14,8 @@ class Session extends Model
         'title',
         'description',
         'start',
-        'end'
+        'end',
+        'is_published'
     ];
 
     protected $casts = [
