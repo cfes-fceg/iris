@@ -8,22 +8,32 @@
         <div class="w-full lg:w-3/4">
             <div class="flex items-center justify-between">
                 <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Sessions</h1>
-                <div>
-                    <label class="flex flex-row items-center">
+                <form method="get" action="{{ route('dashboard') }}">
+                    <div class="flex flex-row">
+                        <label class="flex flex-row items-center">
                         <span class="mr-2">
                             {{ __("Stream") }}:
                         </span>
-                        <select
-                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                            <option>All streams</option>
-                            @foreach(\App\Models\SessionStream::all() as $stream)
-                                <option value="{{ $stream->id }}">{{ $stream->title }}</option>
-                            @endforeach
-                        </select>
-                    </label>
-                </div>
+                            <select name="stream"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                <option value>All streams</option>
+                                @foreach(\App\Models\SessionStream::all() as $stream)
+                                    <option
+                                        value="{{ $stream->id }}"
+                                        @if(isset($data['stream']) && $data['stream'] == $stream->id)
+                                            selected="selected"
+                                        @endif
+                                    >{{ $stream->title }}</option>
+                                @endforeach
+                            </select>
+                        </label>
+                        <x-button>
+                            Go
+                        </x-button>
+                    </div>
+                </form>
             </div>
-            @foreach(\App\Models\Session::all() as $session)
+            @foreach($sessions as $session)
                 <div class="mt-6">
                     <div class="max-w-4xl px-10 py-6 bg-white rounded-lg shadow-md">
                         <div class="flex justify-between items-center">

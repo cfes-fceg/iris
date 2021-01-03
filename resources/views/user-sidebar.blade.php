@@ -17,44 +17,15 @@
                 <i class="fas fa-calendar-day"></i>
             </div>
             <div class="pl-3">
-                <p class="text-sm font-medium text-gray-800 leading-none">Add members</p>
-                <p class="text-xs text-gray-500">Add/manage users &amp; teams</p>
-            </div>
-        </a>
-        <a href="#" class="px-4 py-2 hover:bg-gray-100 flex">
-            <div class="text-gray-800">
-
-            </div>
-            <div class="pl-3">
-                <p class="text-sm font-medium text-gray-800 leading-none">Account settings</p>
-                <p class="text-xs text-gray-500">Usage, billing, branding, teams</p>
-            </div>
-        </a>
-        <a href="#" class="px-4 py-2 hover:bg-gray-100 flex">
-            <div class="text-gray-800">
-
-            </div>
-            <div class="pl-3">
-                <p class="text-sm font-medium text-gray-800 leading-none">Personal settings</p>
-                <p class="text-xs text-gray-500">Email, profile, notifications</p>
-            </div>
-        </a>
-        <a href="#" class="px-4 py-2 hover:bg-gray-100 flex">
-            <div class="text-green-600">
-
-            </div>
-            <div class="pl-3">
-                <p class="text-sm font-medium text-gray-800 leading-none">
-                    Apps &amp; integrations
-                </p>
-                <p class="text-xs text-gray-500">Google, slack, mail</p>
+                <p class="text-sm font-medium text-gray-800 leading-none">{{ __('Schedule') }}</p>
+                <p class="text-xs text-gray-500">{{ __('View upcoming sessions') }}</p>
             </div>
         </a>
     </div>
 
     <div class="">
-        <a href="#" class="px-4 py-4 hover:bg-gray-100 flex">
-            <p class="text-sm font-medium text-gray-800 leading-none">Logout</p>
-        </a>
+{{--        <a href="#" class="px-4 py-4 hover:bg-gray-100 flex">--}}
+{{--            <p class="text-sm font-medium text-gray-800 leading-none">{{ __('Logout') }}</p>--}}
+{{--        </a>--}}
     </div>
 </div>
