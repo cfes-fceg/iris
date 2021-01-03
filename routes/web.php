@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [UserDashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
-Route::group(["prefix" => "admin", "middleware" => ["auth"], "as" => "admin."], function () {
+Route::group(["prefix" => "admin", "middleware" => ["auth", 'admin'], "as" => "admin."], function () {
     Route::get("/", [AdminController::class, 'index'])->name('index');
 
     Route::resource("sessions", SessionsController::class)->except('show');

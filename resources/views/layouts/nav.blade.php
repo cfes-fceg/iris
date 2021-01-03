@@ -8,7 +8,8 @@
                 class="text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
                 href="#"
             >
-                <img src="{{ URL::asset('/image/celc2021-text.png') }}" alt="CELC 2021 Logo" style="width: 8em;"/>
+                <x-application-logo style="width: 8em;"/>
+
             </a>
         </div>
 
