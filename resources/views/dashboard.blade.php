@@ -21,7 +21,7 @@
                                     <option
                                         value="{{ $stream->id }}"
                                         @if(isset($data['stream']) && $data['stream'] == $stream->id)
-                                            selected="selected"
+                                        selected="selected"
                                         @endif
                                     >{{ $stream->title }}</option>
                                 @endforeach
@@ -54,9 +54,10 @@
                             </p>
                         </div>
                         <div class="flex justify-between items-center mt-4">
-                            <x-button>
+                            <x-btn-link-primary
+                                :href="isset($session->stream) ? route('streams.join', $session->stream) : '#' ">
                                 Join Zoom Session
-                            </x-button>
+                            </x-btn-link-primary>
                         </div>
                     </div>
                 </div>

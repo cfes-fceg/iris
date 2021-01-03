@@ -21,7 +21,11 @@ Route::get('/', function () {
     return view('landing.index');
 });
 
-Route::get('/dashboard', [UserDashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::group(["middleware" => ["auth"]], function () {
+    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
+    Route::get("/streams/{stream}/join", [SessionStreamsController::class, 'join'])->name("streams.join");
+});
+
 
 Route::group(["prefix" => "admin", "middleware" => ["auth", 'admin'], "as" => "admin."], function () {
     Route::get("/", [AdminController::class, 'index'])->name('index');

@@ -89,6 +89,11 @@
                                     {{ __('Logout') }}
                                 </x-dropdown-link>
                             </form>
+                            @if(Auth::user()->is_admin)
+                                <x-dropdown-link :href="route('admin.index')">
+                                    Admin
+                                </x-dropdown-link>
+                            @endif
                         </x-slot>
                     </x-dropdown>
                 </div>

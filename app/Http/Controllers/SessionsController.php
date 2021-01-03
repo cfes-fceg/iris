@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Session\StoreRequest;
+use App\Http\Requests\Session\UpdateRequest;
 use App\Models\Session;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -59,11 +60,11 @@ class SessionsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param UpdateRequest $request
      * @param Session $session
      * @return RedirectResponse
      */
-    public function update(Request $request, Session $session)
+    public function update(UpdateRequest $request, Session $session)
     {
         $session->update($request->validated());
         return \response()->redirectToRoute('admin.sessions.index');

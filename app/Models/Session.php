@@ -15,7 +15,8 @@ class Session extends Model
         'description',
         'start',
         'end',
-        'is_published'
+        'is_published',
+        'session_stream_id'
     ];
 
     protected $casts = [

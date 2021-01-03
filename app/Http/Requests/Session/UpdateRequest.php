@@ -15,7 +15,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'is_published' => ['boolean'],
-            'session_stream_id' => ['integer', 'exists:session_streams,id'],
+            'session_stream_id' => ['nullable', 'integer', 'exists:session_streams,id'],
             'title' => ['string', 'max:255'],
             'description' => ['string'],
             'start' => ['date', 'date_format:Y-m-d\TH:i'],
