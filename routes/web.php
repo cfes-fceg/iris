@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\SessionStreamsController;
+use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\UserDashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,7 @@ Route::group(["prefix" => "admin", "middleware" => ["auth", 'admin'], "as" => "a
 
     Route::resource("sessions", SessionsController::class)->except('show');
     Route::resource("streams", SessionStreamsController::class)->except('show');
+    Route::resource("users", UserAdminController::class)->except('show');
 });
 
 require __DIR__ . '/auth.php';

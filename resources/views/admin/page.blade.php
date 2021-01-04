@@ -8,7 +8,7 @@
         </div>
         <div class="w-5/6 flex flex-col">
             <div class="flex flex-row justify-between">
-                <span class="text-lg text-semibold mb-4">
+                <span class="text-lg text-bold mb-4">
                     {{ $title }}
                 </span>
                 <div>

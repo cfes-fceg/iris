@@ -51,8 +51,18 @@ class User extends Authenticatable
         'is_active' => 'boolean'
     ];
 
-    public function setDiscordRegistrationIdAttribute()
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
     {
-        $this->attributes['discord_registration_id'] = Uuid::uuid();
+        parent::boot();
+
+        // auto-sets values on creation
+        static::creating(function ($query) {
+            $query->discord_registration_id = Uuid::uuid();
+        });
     }
 }

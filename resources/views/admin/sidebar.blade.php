@@ -24,6 +24,15 @@
                     <p class="text-xs text-gray-500">Add/manage session streams</p>
                 </div>
             </a>
+            <a href="{{ route('admin.users.index') }}" class="px-4 py-2 hover:bg-gray-100 flex">
+                <div class="text-gray-800">
+                    <i class="fas fa-user-edit"></i>
+                </div>
+                <div class="pl-3">
+                    <p class="text-sm font-medium text-gray-800 leading-none">Manage Users</p>
+                    <p class="text-xs text-gray-500">Add/manage users</p>
+                </div>
+            </a>
         </div>
 
         <div class="">
