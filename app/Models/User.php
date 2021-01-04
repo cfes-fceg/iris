@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Faker\Provider\Uuid;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -22,7 +21,13 @@ class User extends Authenticatable
         'email',
         'password',
         'is_admin',
-        'discord_user_id'
+        'discord_user_id',
+        'language',
+        'school',
+        'engsoc_pos',
+        'program',
+        'linkedin',
+        'is_active'
     ];
 
     /**
@@ -42,7 +47,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'is_admin' => 'boolean'
+        'is_admin' => 'boolean',
+        'is_active' => 'boolean'
     ];
 
     public function setDiscordRegistrationIdAttribute()
