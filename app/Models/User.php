@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Faker\Provider\Uuid;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -20,7 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'is_admin'
+        'is_admin',
+        'discord_user_id'
     ];
 
     /**
@@ -42,4 +44,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'is_admin' => 'boolean'
     ];
+
+    public function setDiscordRegistrationIdAttribute()
+    {
+        $this->attributes['discord_registration_id'] = Uuid::uuid();
+    }
 }

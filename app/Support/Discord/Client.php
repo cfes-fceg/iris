@@ -211,6 +211,11 @@ class Client
     {
         $this->client->guild->addGuildMemberRole(['user.id' => $user_id, 'role.id' => $role_id, 'guild.id' => $this->guild_id]);
     }
+
+    public function removeGuildRole($user_id, $role_id)
+    {
+        $this->client->guild->removeGuildMemberRole(['user.id' => $user_id, 'role.id' => $role_id, 'guild.id' => $this->guild_id]);
+    }
 }
 
 
