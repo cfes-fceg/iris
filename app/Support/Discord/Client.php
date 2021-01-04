@@ -217,6 +217,3 @@ class Client
         $this->client->guild->removeGuildMemberRole(['user.id' => $user_id, 'role.id' => $role_id, 'guild.id' => $this->guild_id]);
     }
 }
-
-
-

@@ -12,13 +12,22 @@
         </div>
     </div>
     <div class="border-b">
-        <a href="#" class="px-4 py-2 hover:bg-gray-100 flex">
+        <a href="{{ route('dashboard') }}" class="px-4 py-2 hover:bg-gray-100 flex">
             <div class="text-gray-800">
                 <i class="fas fa-calendar-day"></i>
             </div>
             <div class="pl-3">
                 <p class="text-sm font-medium text-gray-800 leading-none">{{ __('Schedule') }}</p>
                 <p class="text-xs text-gray-500">{{ __('View upcoming sessions') }}</p>
+            </div>
+        </a>
+        <a href="{{ route('discord') }}" class="px-4 py-2 hover:bg-gray-100 flex">
+            <div class="text-gray-800">
+                <i class="fab fa-discord"></i>
+            </div>
+            <div class="pl-3">
+                <p class="text-sm font-medium text-gray-800 leading-none">{{ __('Discord') }}</p>
+                <p class="text-xs text-gray-500">{{ __('Access the CELC 2021 discord') }}</p>
             </div>
         </a>
     </div>

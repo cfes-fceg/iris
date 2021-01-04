@@ -23,9 +23,13 @@ Route::get('/', function () {
 
 Route::group(["middleware" => ["auth"]], function () {
     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/discord', [UserDashboardController::class, 'discord'])->name('discord');
     Route::get("/streams/{stream}/join", [SessionStreamsController::class, 'join'])->name("streams.join");
 });
 
+Route::get("/discord/invite", function () {
+    return response()->redirectTo("https://discord.gg/BxEpwCT6FW");
+})->name('discord.invite');
 
 Route::group(["prefix" => "admin", "middleware" => ["auth", 'admin'], "as" => "admin."], function () {
     Route::get("/", [AdminController::class, 'index'])->name('index');

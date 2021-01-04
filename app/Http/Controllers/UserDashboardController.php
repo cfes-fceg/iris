@@ -9,7 +9,6 @@ class UserDashboardController extends Controller
 {
     public function index(FilterRequest $request)
     {
-
         $data = $request->validated();
         $query = Session::query();
 
@@ -18,5 +17,9 @@ class UserDashboardController extends Controller
 
 
         return view('dashboard')->with(["sessions" => $query->get(), "data" => $data]);
+    }
+
+    public function discord() {
+        return view('discord');
     }
 }
