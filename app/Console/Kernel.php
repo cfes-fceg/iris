@@ -2,6 +2,9 @@
 
 namespace App\Console;
 
+use App\Console\Commands\Discord\DeleteCommand;
+use App\Console\Commands\Discord\ListRoles;
+use App\Console\Commands\Discord\SyncCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,13 +16,15 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        SyncCommand::class,
+        DeleteCommand::class,
+        ListRoles::class,
     ];
 
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param Schedule $schedule
      * @return void
      */
     protected function schedule(Schedule $schedule)

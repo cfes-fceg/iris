@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -228,5 +228,14 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+
+    'discord' => [
+        'client' => [
+            'id' => env('DISCORD_CLIENT_ID'),
+            'secret' => env('DISCORD_CLIENT_SECRET'),
+        ],
+        'token' => env('DISCORD_BOT_TOKEN'),
+        'pubkey' => env('DISCORD_PUBLIC_KEY'),
+    ]
 
 ];

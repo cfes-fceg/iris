@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a11a9f4877708fc31ea27c62cf46993d",
+    "content-hash": "3d9b8111cec274434b23a96713fc2a9e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -109,6 +109,45 @@
                 }
             ],
             "time": "2020-08-18T23:57:15+00:00"
+        },
+        {
+            "name": "discord/interactions",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/discord/discord-interactions-php.git",
+                "reference": "113a9c66b73fc05612a4c759d11db3ef6f12b6f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/discord/discord-interactions-php/zipball/113a9c66b73fc05612a4c759d11db3ef6f12b6f8",
+                "reference": "113a9c66b73fc05612a4c759d11db3ef6f12b6f8",
+                "shasum": ""
+            },
+            "require": {
+                "simplito/elliptic-php": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Discord\\": "discord"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ian Webster",
+                    "email": "ianw_php@ianww.com"
+                }
+            ],
+            "description": "Utils for implementing the Discord Interactions API",
+            "keywords": [
+                "discord"
+            ],
+            "time": "2020-12-14T21:21:43+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -621,6 +660,59 @@
             "time": "2020-04-13T13:17:36+00:00"
         },
         {
+            "name": "guzzlehttp/command",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/command.git",
+                "reference": "713b58dc242a96eb4c463413d628b2df59f69595"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/command/zipball/713b58dc242a96eb4c463413d628b2df59f69595",
+                "reference": "713b58dc242a96eb4c463413d628b2df59f69595",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.0.1",
+                "guzzlehttp/promises": "~1.3",
+                "guzzlehttp/psr7": "~1.0",
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.5.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.9-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Command\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Jeremy Lindblom",
+                    "email": "jeremeamia@gmail.com",
+                    "homepage": "https://github.com/jeremeamia"
+                }
+            ],
+            "description": "Provides the foundation for building command-based web service clients",
+            "time": "2020-09-28T21:43:57+00:00"
+        },
+        {
             "name": "guzzlehttp/guzzle",
             "version": "7.2.0",
             "source": {
@@ -717,6 +809,67 @@
                 }
             ],
             "time": "2020-10-10T11:47:56+00:00"
+        },
+        {
+            "name": "guzzlehttp/guzzle-services",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle-services.git",
+                "reference": "21e931a4784a132fa78ea7c37abf0e806b053c23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle-services/zipball/21e931a4784a132fa78ea7c37abf0e806b053c23",
+                "reference": "21e931a4784a132fa78ea7c37abf0e806b053c23",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/command": "^1.1.0",
+                "guzzlehttp/guzzle": "^7.0.1",
+                "guzzlehttp/uri-template": "^0.2.0",
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~9.0"
+            },
+            "suggest": {
+                "gimler/guzzle-description-loader": "^0.0.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Command\\Guzzle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Jeremy Lindblom",
+                    "email": "jeremeamia@gmail.com",
+                    "homepage": "https://github.com/jeremeamia"
+                },
+                {
+                    "name": "Stefano Kowalke",
+                    "email": "blueduck@mail.org",
+                    "homepage": "https://github.com/konafets"
+                }
+            ],
+            "description": "Provides an implementation of the Guzzle Command library that uses Guzzle service descriptions to describe web services, serialize requests, and parse responses into easy to use model structures.",
+            "time": "2020-11-13T22:17:22+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -839,6 +992,69 @@
                 "url"
             ],
             "time": "2020-09-30T07:37:11+00:00"
+        },
+        {
+            "name": "guzzlehttp/uri-template",
+            "version": "v0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/uri-template.git",
+                "reference": "db46525d6d8fee71033b73cc07160f3e5271a8ce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/uri-template/zipball/db46525d6d8fee71033b73cc07160f3e5271a8ce",
+                "reference": "db46525d6d8fee71033b73cc07160f3e5271a8ce",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1 || ^8.0",
+                "symfony/polyfill-php80": "^1.17"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5.15 || ^8.5 || ^9.3",
+                "uri-template/tests": "1.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\UriTemplate\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "George Mponos",
+                    "email": "gmponos@gmail.com",
+                    "homepage": "https://github.com/gmponos",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A polyfill class for uri_template of PHP",
+            "homepage": "https://github.com/guzzlehttp/uri-template",
+            "keywords": [
+                "guzzlehttp",
+                "uri-template"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/gmponos",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-07-21T13:45:09+00:00"
         },
         {
             "name": "laravel/framework",
@@ -1484,6 +1700,52 @@
                 }
             ],
             "time": "2020-12-17T20:55:32+00:00"
+        },
+        {
+            "name": "netresearch/jsonmapper",
+            "version": "v1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cweiske/jsonmapper.git",
+                "reference": "0d4d1b48d682a93b6bfedf60b88c7750e9cb0b06"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cweiske/jsonmapper/zipball/0d4d1b48d682a93b6bfedf60b88c7750e9cb0b06",
+                "reference": "0d4d1b48d682a93b6bfedf60b88c7750e9cb0b06",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-pcre": "*",
+                "ext-reflection": "*",
+                "ext-spl": "*",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8.35 || ~5.7 || ~6.4",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JsonMapper": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Weiske",
+                    "email": "cweiske@cweiske.de",
+                    "homepage": "http://github.com/cweiske/jsonmapper/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Map nested JSON structures onto PHP classes",
+            "time": "2019-08-15T19:41:25+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -2219,6 +2481,197 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "simplito/bigint-wrapper-php",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simplito/bigint-wrapper-php.git",
+                "reference": "cf21ec76d33f103add487b3eadbd9f5033a25930"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/simplito/bigint-wrapper-php/zipball/cf21ec76d33f103add487b3eadbd9f5033a25930",
+                "reference": "cf21ec76d33f103add487b3eadbd9f5033a25930",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BI\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simplito Team",
+                    "email": "s.smyczynski@simplito.com",
+                    "homepage": "https://simplito.com"
+                }
+            ],
+            "description": "Common interface for php_gmp and php_bcmath modules",
+            "time": "2018-02-27T12:38:08+00:00"
+        },
+        {
+            "name": "simplito/bn-php",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simplito/bn-php.git",
+                "reference": "e852fcd27e4acbc32459606d7606e45a85e42465"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/simplito/bn-php/zipball/e852fcd27e4acbc32459606d7606e45a85e42465",
+                "reference": "e852fcd27e4acbc32459606d7606e45a85e42465",
+                "shasum": ""
+            },
+            "require": {
+                "simplito/bigint-wrapper-php": "~1.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BN\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simplito Team",
+                    "email": "s.smyczynski@simplito.com",
+                    "homepage": "https://simplito.com"
+                }
+            ],
+            "description": "Big number implementation compatible with bn.js",
+            "time": "2018-04-12T11:07:43+00:00"
+        },
+        {
+            "name": "simplito/elliptic-php",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simplito/elliptic-php.git",
+                "reference": "15652609aa55968d56685c2a9120535ccdc00fd9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/simplito/elliptic-php/zipball/15652609aa55968d56685c2a9120535ccdc00fd9",
+                "reference": "15652609aa55968d56685c2a9120535ccdc00fd9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gmp": "*",
+                "simplito/bn-php": "~1.1.0"
+            },
+            "require-dev": {
+                "phpbench/phpbench": "@dev",
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Elliptic\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simplito Team",
+                    "email": "s.smyczynski@simplito.com",
+                    "homepage": "https://simplito.com"
+                }
+            ],
+            "description": "Fast elliptic curve cryptography",
+            "homepage": "https://github.com/simplito/elliptic-php",
+            "keywords": [
+                "Curve25519",
+                "ECDSA",
+                "Ed25519",
+                "EdDSA",
+                "cryptography",
+                "curve",
+                "ecc",
+                "ecdh",
+                "elliptic",
+                "nistp192",
+                "nistp224",
+                "nistp256",
+                "nistp384",
+                "nistp521",
+                "secp256k1"
+            ],
+            "time": "2019-11-14T13:43:07+00:00"
+        },
+        {
+            "name": "skyraptor/restcord",
+            "version": "dev-guzzle-7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alexstojda/restcord.git",
+                "reference": "7f2e7c35ac48f248b8cc858261872219b94b1e40"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alexstojda/restcord/zipball/7f2e7c35ac48f248b8cc858261872219b94b1e40",
+                "reference": "7f2e7c35ac48f248b8cc858261872219b94b1e40",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.0",
+                "guzzlehttp/guzzle-services": "^1.0",
+                "monolog/monolog": "^1.22|^2.0",
+                "netresearch/jsonmapper": "^1.4",
+                "php": "^5.6|^7.0",
+                "symfony/options-resolver": "^2.6|^3.0|^4.0|^5.0"
+            },
+            "require-dev": {
+                "beberlei/assert": "^2.7",
+                "gossi/php-code-generator": "^0.4.1",
+                "phpunit/phpunit": "^6.0|^5.0",
+                "symfony/console": "^2.6|^3.0|^4.0",
+                "symfony/process": "^2.6|^3.0|^4.0",
+                "symfony/var-dumper": "^2.6|^3.0|^4.0",
+                "twig/twig": "^1.20|^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RestCord\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "RestCord\\Test\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Scherer",
+                    "email": "aequasi@gmail.com"
+                }
+            ],
+            "description": "REST Library for the Discord API",
+            "support": {
+                "source": "https://github.com/alexstojda/restcord/tree/guzzle-7"
+            },
+            "time": "2020-11-14T13:55:46+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3124,6 +3577,72 @@
                 }
             ],
             "time": "2020-12-09T18:54:12+00:00"
+        },
+        {
+            "name": "symfony/options-resolver",
+            "version": "v5.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/options-resolver.git",
+                "reference": "87a2a4a766244e796dd9cb9d6f58c123358cd986"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/87a2a4a766244e796dd9cb9d6f58c123358cd986",
+                "reference": "87a2a4a766244e796dd9cb9d6f58c123358cd986",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/deprecation-contracts": "^2.1",
+                "symfony/polyfill-php73": "~1.0",
+                "symfony/polyfill-php80": "^1.15"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\OptionsResolver\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony OptionsResolver Component",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "config",
+                "configuration",
+                "options"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-10-24T12:08:07+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -7200,12 +7719,15 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": [],
-    "prefer-stable": true,
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "skyraptor/restcord": 20
+    },
+    "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3|^8.0"
+        "php": "^7.3|^8.0",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"
