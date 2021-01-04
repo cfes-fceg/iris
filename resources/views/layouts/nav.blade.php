@@ -6,7 +6,7 @@
         <div class="pl-4 flex items-center">
             <a
                 class="text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
-                href="#"
+                href="{{ route('sessions') }}"
             >
                 <x-application-logo style="width: 8em;"/>
 
@@ -79,21 +79,24 @@
                         </x-slot>
 
                         <x-slot name="content">
+                            <x-dropdown-link :href="route('sessions')">
+                                Conference Dashboard
+                            </x-dropdown-link>
+                            @if(Auth::user()->is_admin)
+                                <x-dropdown-link :href="route('admin.index')">
+                                    Administration
+                                </x-dropdown-link>
+                            @endif
+                            <hr/>
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-
                                 <x-dropdown-link :href="route('logout')"
                                                  onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                     {{ __('Logout') }}
                                 </x-dropdown-link>
                             </form>
-                            @if(Auth::user()->is_admin)
-                                <x-dropdown-link :href="route('admin.index')">
-                                    Admin
-                                </x-dropdown-link>
-                            @endif
                         </x-slot>
                     </x-dropdown>
                 </div>

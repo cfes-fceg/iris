@@ -4,7 +4,7 @@
             <span class="block text-lg text-semibold mb-7">
                 &nbsp;
             </span>
-            @include('user-sidebar')
+            @include('user.sidebar')
         </div>
         <div class="w-3/4 flex flex-col">
             <div class="flex flex-row justify-between mb-4">

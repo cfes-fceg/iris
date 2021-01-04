@@ -15,11 +15,10 @@ class UserDashboardController extends Controller
         if (key_exists('stream', $data) && $data['stream'] > 0)
             $query = $query->where('session_stream_id', $data['stream']);
 
-
-        return view('dashboard')->with(["sessions" => $query->get(), "data" => $data]);
+        return view('user.sessions')->with(["sessions" => $query->get(), "data" => $data]);
     }
 
     public function discord() {
-        return view('discord');
+        return view('user.discord');
     }
 }

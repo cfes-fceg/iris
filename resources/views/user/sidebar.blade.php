@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="border-b">
-        <a href="{{ route('dashboard') }}" class="px-4 py-2 hover:bg-gray-100 flex">
+        <a href="{{ route('sessions') }}" class="px-4 py-2 hover:bg-gray-100 flex">
             <div class="text-gray-800">
                 <i class="fas fa-calendar-day"></i>
             </div>

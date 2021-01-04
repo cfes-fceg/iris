@@ -13,10 +13,10 @@
             Welcome to the 2021 Canadian Engineering Leadership Conference, hosted by the Zoom University Undergraduate Engineering Society (AKA The CFES officer team).
         </p>
 
-        <a href="{{ route('register') }}"
-            class="mx-auto gradient2 lg:mx-0 hover:underline text-blue-100 font-extrabold rounded my-2 md:my-6 py-4 px-8 shadow-lg w-48"
+        <a href="{{ route('login') }}"
+            class="mx-auto gradient2 lg:mx-0 hover:underline text-blue-100 font-semibold rounded my-2 md:my-6 py-4 px-8 shadow-lg w-48"
         >
-            Register
+            Login
         </a>
     </div>
 
@@ -734,7 +734,7 @@
 
     function checkParent(t, elm) {
         while (t.parentNode) {
-            if (t == elm) {
+            if (t === elm) {
                 return true;
             }
             t = t.parentNode;

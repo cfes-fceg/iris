@@ -1,6 +1,6 @@
 <x-user-layout title="Sessions">
     <x-slot name="actions">
-        <form method="get" action="{{ route('dashboard') }}">
+        <form method="get" action="{{ route('sessions') }}">
             <div class="flex flex-row">
                 <label class="flex flex-row items-center">
                         <span class="mr-2">
