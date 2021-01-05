@@ -25,6 +25,9 @@ Route::get('/', function () {
 Route::group(["middleware" => ["auth"]], function () {
     Route::get('/sessions', [UserDashboardController::class, 'index'])->name('sessions');
     Route::get('/discord', [UserDashboardController::class, 'discord'])->name('discord');
+    Route::get('/account', [UserDashboardController::class, 'account'])->name('account');
+    Route::put('/account', [UserDashboardController::class, 'updateAccount']);
+
     Route::get("/sessions/{session}/join", [SessionsController::class, 'join'])->name("sessions.join");
 });
 

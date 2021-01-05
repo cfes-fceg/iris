@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Session\FilterRequest;
+use App\Http\Requests\User\UpdateRequest;
 use App\Models\Session;
 use Carbon\Carbon;
+use Request;
 use function DeepCopy\deep_copy;
 
 class   UserDashboardController extends Controller
@@ -43,6 +45,15 @@ class   UserDashboardController extends Controller
                 ]
             ]
         );
+    }
+
+    public function updateAccount(UpdateRequest $request) {
+        $request->user()->update($request->validated());
+        return redirect()->route('account');
+    }
+
+    public function account() {
+        return view('user.account', ["user" => \Auth::user()]);
     }
 
     public function discord()

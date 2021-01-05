@@ -21,11 +21,20 @@
                 <p class="text-xs text-gray-500">{{ __('Access the CELC 2021 discord') }}</p>
             </div>
         </a>
+        <a href="{{ route('account') }}" class="px-4 py-2 hover:bg-gray-100 flex">
+            <div class="text-gray-800">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="pl-3">
+                <p class="text-sm font-medium text-gray-800 leading-none">{{ __('My Profile') }}</p>
+                <p class="text-xs text-gray-500">{{ __('Modify my account') }}</p>
+            </div>
+        </a>
     </div>
 
     <div class="">
-{{--        <a href="#" class="px-4 py-4 hover:bg-gray-100 flex">--}}
-{{--            <p class="text-sm font-medium text-gray-800 leading-none">{{ __('Logout') }}</p>--}}
-{{--        </a>--}}
+        {{--        <a href="#" class="px-4 py-4 hover:bg-gray-100 flex">--}}
+        {{--            <p class="text-sm font-medium text-gray-800 leading-none">{{ __('Logout') }}</p>--}}
+        {{--        </a>--}}
     </div>
 </div>

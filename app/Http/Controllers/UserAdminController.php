@@ -34,7 +34,7 @@ class UserAdminController extends Controller
      */
     public function create()
     {
-        return \view('admin.user.form')->with(["user" => null]);
+        return \view('admin.user.edit')->with(["user" => null]);
     }
 
     /**
@@ -64,7 +64,7 @@ class UserAdminController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.user.form')->with(["user" => $user]);
+        return view('admin.user.edit')->with(["user" => $user]);
     }
 
     /**
