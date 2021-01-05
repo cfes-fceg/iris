@@ -33,15 +33,18 @@
             id="nav-content"
         >
             <ul class="list-reset lg:flex justify-end flex-1 items-center">
-                {{--
                 <li class="mr-3">
                     <a
-                        class="inline-block py-2 px-4 text-black font-bold no-underline"
-                        href="#"
-                    >Active</a
+                        class="inline-block py-2 px-4 no-underline"
+                        href="{{ route('setLocale', ["locale" => App::currentLocale() == "en" ? "fr" : "en"]) }}"
                     >
+                        @if(App::currentLocale() == "en")
+                            {{ __('French', [], 'fr') }}
+                        @else
+                            English
+                        @endif
+                    </a>
                 </li>
-                --}}
             </ul>
 
             <!-- Settings Dropdown -->

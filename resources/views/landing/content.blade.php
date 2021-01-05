@@ -23,7 +23,7 @@
     </div>
 
     <div class="w-1/2 text-center">
-        <img src="{{ URL::asset('image/video-call-computer.svg') }}" style="height: 50vh" class="mx-auto" alt="Video Call Clipart"/>
+        <img src="{{ URL::asset('image/video-call-computer.svg') }}" style="height: 62vh" class="mx-auto" alt="Video Call Clipart"/>
     </div>
 </div>
 

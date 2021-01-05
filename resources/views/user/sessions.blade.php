@@ -20,7 +20,7 @@
                         </span>
                     <x-select name="stream"
                             class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                        <option value>All streams</option>
+                        <option value>{{ __('All') }}</option>
                         @foreach(\App\Models\SessionStream::all() as $stream)
                             <option
                                 value="{{ $stream->id }}"
@@ -53,7 +53,7 @@
                             </span>
                     <a href="#"
                        class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-gray-500">
-                        {{ isset($session->stream) ? $session->stream->title : "All Streams" }}
+                        {{ isset($session->stream) ? $session->stream->title : __('All Streams') }}
                     </a>
                 </div>
                 <div class="mt-2">
