@@ -25,6 +25,7 @@
         "skyraptor/restcord": "dev-guzzle-7"
     },
     "require-dev": {
+        "amirami/localizator": "dev-master",
         "barryvdh/laravel-debugbar": "^3.5",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
