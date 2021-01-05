@@ -18,7 +18,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<body class="gradient leading-relaxed tracking-wide flex flex-col">
+<body class="gradient leading-relaxed tracking-wide flex flex-col min-h-screen justify-between">
 @include('layouts.nav')
 @include('landing.content')
 @include('layouts.footer')
