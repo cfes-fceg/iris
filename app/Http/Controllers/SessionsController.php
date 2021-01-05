@@ -6,6 +6,7 @@ use App\Http\Requests\Session\StoreRequest;
 use App\Http\Requests\Session\UpdateRequest;
 use App\Models\Session;
 use App\Models\SessionStream;
+use App\Support\Zoom;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -13,7 +14,6 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use MacsiDigital\Zoom\Facades\Zoom;
 
 class SessionsController extends Controller
 {
@@ -45,7 +45,12 @@ class SessionsController extends Controller
      */
     public function store(StoreRequest $request): RedirectResponse
     {
-        Session::create($request->validated());
+        $session = Session::create($request->validated());
+        if (empty($session->zoom_meeting_id) && $request->get('create_meeting') == true) {
+            $meeting = Zoom::createMeeting("CELC - CCLI 2021 | ".$session->title, "zoom.mars@cfes.ca");
+            $session->zoom_meeting_id = $meeting->id;
+            $session->save();
+        }
         return \response()->redirectToRoute('admin.sessions.index');
     }
 
@@ -95,9 +100,7 @@ class SessionsController extends Controller
      */
     public function join(Request $request, Session $session) {
         if ($session->zoom_meeting_id != null) {
-            $meeting = Zoom::meeting()->find($session->zoom_meeting_id);
-            $join_url = $meeting->join_url;
-            return redirect()->to($join_url);
+            return redirect()->to(Zoom::getJoinUrl($session->zoom_meeting_id));
         } else {
             return back();
         }
