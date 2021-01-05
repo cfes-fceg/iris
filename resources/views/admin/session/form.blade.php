@@ -49,7 +49,7 @@
                 <div class="my-2">
                     <x-label for="zoom_meeting_id" :value="__('Zoom Meeting ID')"/>
                     <x-input id="zoom_meeting_id" class="block mt-1 w-full" type="number" name="zoom_meeting_id"
-                             :value="old('zoom_meeting_id', optional($stream)->zoom_meeting_id)" required autofocus/>
+                             :value="old('zoom_meeting_id', optional($session)->zoom_meeting_id)" required autofocus/>
                     @error('zoom_meeting_id')
                     <span>
                     {{ $message }}
@@ -97,6 +97,26 @@
                     </span>
                     @enderror
                 </div>
+                @if(!isset($session))
+                <div class="block mt-4">
+                    <label for="create_meeting" class="inline-flex items-center">
+                        <input id="create_meeting" type="checkbox"
+                               class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                               name="create_meeting"
+                               @if(old('create_meeting'))
+                               checked="checked"
+                            @endif
+                        >
+                        <span class="ml-2 text-sm text-gray-600">{{ __('Create a zoom meeting?') }}</span>
+                    </label>
+
+                    @error('create_meeting')
+                    <span class="text-red-600">
+                        {{ $message }}
+                    </span>
+                    @enderror
+                </div>
+                @endif
                 <x-button type="submit">
                     Save
                 </x-button>

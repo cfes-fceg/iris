@@ -45,12 +45,12 @@ class SessionsController extends Controller
      */
     public function store(StoreRequest $request): RedirectResponse
     {
-        $session = Session::create($request->validated());
+        $session = Session::make($request->validated());
         if (empty($session->zoom_meeting_id) && $request->get('create_meeting') == true) {
             $meeting = Zoom::createMeeting("CELC - CCLI 2021 | ".$session->title, "zoom.mars@cfes.ca");
             $session->zoom_meeting_id = $meeting->id;
-            $session->save();
         }
+        $session->save();
         return \response()->redirectToRoute('admin.sessions.index');
     }
 
