@@ -95,7 +95,7 @@
                    id="navAction"
                    class="mx-auto gradient2 lg:mx-0 hover:underline text-white rounded mt-4 lg:mt-0 py-4 px-8 shadow"
                 >
-                    {{ __('Log in') }}
+                    {{ __('Login') }}
                 </a>
             @endif
         </div>
