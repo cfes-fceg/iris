@@ -29,10 +29,10 @@ class   UserDashboardController extends Controller
 
         $query = $query->orderBy('start', 'ASC');
 
-        $prevParams = deep_copy($request->query->all());
+        $prevParams = $request->query->all();
         $prevParams['date'] = $date->subDay()->format('Y-m-d');
 
-        $nextParams = deep_copy($request->query->all());
+        $nextParams = $request->query->all();
         $nextParams['date'] = $date->addDays(2)->format('Y-m-d');
 
         return view('user.sessions')->with(
