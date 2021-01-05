@@ -6,13 +6,19 @@
                     <x-label for="date" class="mr-2">
                         {{ __('Schedule for date:') }}
                     </x-label>
-                    <x-input id="date" name="date" type="date" value="{{ isset($data['date']) ? $data['date'] : \Carbon\Carbon::now()->format('Y-m-d') }}"/>
+                    <a href="{{ $links['prev'] }}" class="p-2 bg-white hover:bg-gray-50 shadow-sm rounded mr-2">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                    <x-input class="mr-2" id="date" name="date" type="date" value="{{ isset($data['date']) ? $data['date'] : \Carbon\Carbon::now('America/Toronto')->format('Y-m-d') }}"/>
+                    <a href="{{ $links['next'] }}" class="p-2 bg-white hover:bg-gray-50 shadow-sm rounded">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
                 </div>
-                <label class="flex flex-row items-center">
+                <x-label class="flex flex-row items-center mr-2">
                         <span class="mr-2">
                             {{ __("Stream") }}:
                         </span>
-                    <select name="stream"
+                    <x-select name="stream"
                             class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         <option value>All streams</option>
                         @foreach(\App\Models\SessionStream::all() as $stream)
@@ -23,14 +29,21 @@
                                 @endif
                             >{{ $stream->title }}</option>
                         @endforeach
-                    </select>
-                </label>
-                <x-button>
+                    </x-select>
+                </x-label>
+                <x-button class="h-full py-3">
                     Go
                 </x-button>
             </div>
         </form>
     </x-slot>
+    @if($sessions->count() == 0)
+        <div class="p-6 mb-6 py-20 flex flex-col items-center">
+            <span class="text-lg text-gray-500">
+                {{ __('No sessions match the current selection') }}
+            </span>
+        </div>
+    @endif
     @foreach($sessions as $session)
         <div class="mb-6">
             <div class="px-10 py-6 bg-white rounded-lg shadow-md">
@@ -65,6 +78,19 @@
             </div>
         </div>
     @endforeach
+    <div class="w-full flex flex-row justify-around">
+        <div>
+            <a href="{{ $links['prev'] }}" class="p-2 bg-white hover:bg-gray-50 shadow-md rounded mr-2">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <span class="p-2 bg-white shadow-md rounded mr-2">
+                {{ $data['date'] ?? \Carbon\Carbon::now('America/Toronto')->format('Y-m-d') }}
+            </span>
+            <a href="{{ $links['next'] }}" class="p-2 bg-white hover:bg-gray-50 shadow-md rounded">
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+    </div>
 
 {{-- Pagination, unused
     <div class="mt-8">
