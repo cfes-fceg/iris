@@ -9,7 +9,6 @@
                 href="{{ route('sessions') }}"
             >
                 <x-application-logo style="width: 8em;"/>
-
             </a>
         </div>
 
@@ -23,7 +22,7 @@
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
                 >
-                    <title>Menu</title>
+                    <title>{{ __('Menu') }}</title>
                     <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
                 </svg>
             </button>
@@ -34,27 +33,15 @@
             id="nav-content"
         >
             <ul class="list-reset lg:flex justify-end flex-1 items-center">
-                {{--<li class="mr-3">
+                {{--
+                <li class="mr-3">
                     <a
                         class="inline-block py-2 px-4 text-black font-bold no-underline"
                         href="#"
                     >Active</a
                     >
                 </li>
-                <li class="mr-3">
-                    <a
-                        class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-                        href="#"
-                    >link</a
-                    >
-                </li>
-                <li class="mr-3">
-                    <a
-                        class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-                        href="#"
-                    >link</a
-                    >
-                </li>--}}
+                --}}
             </ul>
 
             <!-- Settings Dropdown -->
@@ -80,11 +67,11 @@
 
                         <x-slot name="content">
                             <x-dropdown-link :href="route('sessions')">
-                                Conference Dashboard
+                                {{ __('Conference Dashboard') }}
                             </x-dropdown-link>
                             @if(Auth::user()->is_admin)
                                 <x-dropdown-link :href="route('admin.index')">
-                                    Administration
+                                    {{ __('Administration') }}
                                 </x-dropdown-link>
                             @endif
                             <hr/>
@@ -105,7 +92,7 @@
                    id="navAction"
                    class="mx-auto gradient2 lg:mx-0 hover:underline text-white rounded mt-4 lg:mt-0 py-4 px-8 shadow"
                 >
-                    Log in
+                    {{ __('Log in') }}
                 </a>
             @endif
         </div>

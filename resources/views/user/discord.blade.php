@@ -15,7 +15,7 @@
                 </span>
                 <span class="m-2 w-full flex flex-col items-center">
                     <span class="m-2">
-                        {!!  __('Join the CFES server, if you have not already done so:') !!}
+                        {!!  __('Join the server, if you have not already done so:') !!}
                     </span>
                     <x-btn-link-primary href="{{ route('discord.invite') }}">
                         {{__('Join the CFES Discord Server')}}
@@ -28,7 +28,7 @@
                 </span>
                 <div class="flex flex-col items-center">
                     <span class="m-2">
-                        {!!  __('Enter the following command into the chat bar in the <strong>#bot-spam</strong> channel:') !!}
+                        {!!  __('Enter the following command into the chat bar of the <strong>#bot-spam</strong> channel:') !!}
                     </span>
                     <div class="w-3/4 rounded bg-gray-600 p-2 flex flex-row items-center text-gray-300">
                 <pre
