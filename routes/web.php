@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\SessionStreamsController;
 use App\Http\Controllers\UserAdminController;
@@ -18,10 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('setlocale/{locale}', function ($lang) {
-    \Session::put('locale', $lang);
-    return redirect()->back();
-})->name('setLocale');
+Route::get('setlocale/{locale}', LanguageController::class)->name('setLocale');
 
 Route::middleware('lang')->group(function () {
     Route::get('/', function () {

@@ -22,7 +22,8 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "skyraptor/restcord": "dev-guzzle-7"
+        "skyraptor/restcord": "dev-guzzle-7",
+        "ext-intl": "*"
     },
     "require-dev": {
         "amirami/localizator": "dev-master",

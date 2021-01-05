@@ -20,7 +20,10 @@ class LanguageSwitcher
     public function handle(Request $request, Closure $next)
     {
         if (!Session::has('locale')) {
-            Session::put('locale', Config::get('app.locale'));
+            if(\Auth::user())
+                Session::put('locale', \Auth::user()->language);
+            else
+                Session::put('locale', Config::get('app.locale'));
         }
         App::setLocale(session('locale'));
         return $next($request);
