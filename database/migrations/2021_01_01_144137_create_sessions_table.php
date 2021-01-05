@@ -16,6 +16,7 @@ class CreateSessionsTable extends Migration
             $table->dateTimeTz('start');
             $table->dateTimeTz('end');
             $table->boolean('is_published');
+            $table->bigInteger('zoom_meeting_id')->nullable();
             $table->timestamps();
         });
     }

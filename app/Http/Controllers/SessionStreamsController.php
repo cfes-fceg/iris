@@ -85,14 +85,4 @@ class SessionStreamsController extends Controller
         $stream->delete();
         return \response()->redirectToRoute('admin.streams.index');
     }
-
-    public function join(Request $request, SessionStream $stream) {
-        if ($stream->zoom_meeting_id != null) {
-            $meeting = Zoom::meeting()->find($stream->zoom_meeting_id);
-            $join_url = $meeting->join_url;
-            return redirect()->to($join_url);
-        } else {
-            return back();
-        }
-    }
 }

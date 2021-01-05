@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Session;
 use App\Models\SessionStream;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SessionFactory extends Factory
@@ -18,8 +19,8 @@ class SessionFactory extends Factory
     public function definition(): array
     {
         $stream = SessionStream::inRandomOrder()->first();
-        $startDate = $this->faker->dateTime();
-        $endDate = $startDate->add(new \DateInterval('PT1H'));
+        $startDate = $this->faker->dateTimeBetween('now', '+2 weeks');
+        $endDate = (new Carbon($startDate))->add("PT1H");
 
         return [
             'title' => $this->faker->sentence,

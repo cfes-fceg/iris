@@ -1,7 +1,13 @@
 <x-user-layout title="Sessions">
     <x-slot name="actions">
         <form method="get" action="{{ route('sessions') }}">
-            <div class="flex flex-row">
+            <div class="flex flex-row items-center">
+                <div class="flex flex-row items-center mx-2">
+                    <x-label for="date" class="mr-2">
+                        {{ __('Schedule for date:') }}
+                    </x-label>
+                    <x-input id="date" name="date" type="date" value="{{ isset($data['date']) ? $data['date'] : \Carbon\Carbon::now()->format('Y-m-d') }}"/>
+                </div>
                 <label class="flex flex-row items-center">
                         <span class="mr-2">
                             {{ __("Stream") }}:
@@ -30,7 +36,7 @@
             <div class="px-10 py-6 bg-white rounded-lg shadow-md">
                 <div class="flex justify-between items-center">
                             <span class="font-light text-gray-600">
-                                Jun 1, 2020
+                                {{ $session->start->shortRelativeDiffForHumans()}}
                             </span>
                     <a href="#"
                        class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-gray-500">
@@ -38,23 +44,29 @@
                     </a>
                 </div>
                 <div class="mt-2">
-                            <span class="text-2xl text-gray-700 font-bold">
-                                {{ $session->title }}
-                            </span>
+                    <h3 class="text-2xl text-gray-700 font-bold">
+                        {{ $session->title }}
+                    </h3>
+                    <h4 class="text-md text-gray-500">
+                        {{ $session->formattedDate('America/Toronto') }}
+                    </h4>
                     <p class="mt-2 text-gray-600">
                         {{ $session->description }}
                     </p>
                 </div>
-                <div class="flex justify-between items-center mt-4">
-                    <x-btn-link-primary
-                        :href="isset($session->stream) ? route('streams.join', $session->stream) : '#' ">
-                        Join Zoom Session
-                    </x-btn-link-primary>
-                </div>
+                @isset($session->zoom_meeting_id)
+                    <div class="flex justify-between items-center mt-4">
+                        <x-btn-link-primary
+                            :href="isset($session->zoom_meeting_id) ? route('streams.join', $session) : '#' ">
+                            Join Zoom Session
+                        </x-btn-link-primary>
+                    </div>
+                @endisset
             </div>
         </div>
     @endforeach
 
+{{-- Pagination, unused
     <div class="mt-8">
         <div class="flex">
             <a href="#"
@@ -82,5 +94,5 @@
                 Next
             </a>
         </div>
-    </div>
+    </div>--}}
 </x-user-layout>

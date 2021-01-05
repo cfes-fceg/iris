@@ -16,16 +16,6 @@
                 @enderror
             </div>
             <div class="my-2">
-                <x-label for="zoom_meeting_id" :value="__('Zoom Meeting ID')"/>
-                <x-input id="zoom_meeting_id" class="block mt-1 w-full" type="number" name="zoom_meeting_id"
-                         :value="old('zoom_meeting_id', optional($stream)->zoom_meeting_id)" required autofocus/>
-                @error('zoom_meeting_id')
-                <span>
-                    {{ $message }}
-                </span>
-                @enderror
-            </div>
-            <div class="my-2">
                 <x-label for="description" :value="__('Description')"/>
                 <x-textarea id="description" class="block mt-1 w-full" name="description"
                             required autofocus>

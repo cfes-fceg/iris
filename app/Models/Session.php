@@ -15,6 +15,7 @@ class Session extends Model
         'description',
         'start',
         'end',
+        'zoom_meeting_id',
         'is_published',
         'session_stream_id'
     ];
@@ -30,5 +31,12 @@ class Session extends Model
     function stream(): BelongsTo
     {
         return $this->belongsTo(SessionStream::class, 'session_stream_id');
+    }
+
+    public function formattedDate($timezone_str) {
+        $date = $this->start->shiftTimezone($timezone_str)->format('D, d M Y');
+        $startTime = $this->start->shiftTimezone($timezone_str)->format('h:m');
+        $endTime = $this->end->shiftTimezone($timezone_str)->format('h:m');
+        return $date." [".$startTime." - ".$endTime."]";
     }
 }

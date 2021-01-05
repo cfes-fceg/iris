@@ -11,6 +11,7 @@ class FilterRequest extends FormRequest
     {
         return [
             'stream' => ['nullable', 'integer'],
+            'date' => ['nullable', 'date', 'date_format:Y-m-d'],
         ];
     }
 

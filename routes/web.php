@@ -25,7 +25,7 @@ Route::get('/', function () {
 Route::group(["middleware" => ["auth"]], function () {
     Route::get('/sessions', [UserDashboardController::class, 'index'])->name('sessions');
     Route::get('/discord', [UserDashboardController::class, 'discord'])->name('discord');
-    Route::get("/streams/{stream}/join", [SessionStreamsController::class, 'join'])->name("streams.join");
+    Route::get("/sessions/{session}/join", [SessionsController::class, 'join'])->name("sessions.join");
 });
 
 Route::get("/discord/invite", function () {

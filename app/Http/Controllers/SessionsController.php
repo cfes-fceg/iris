@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Session\StoreRequest;
 use App\Http\Requests\Session\UpdateRequest;
 use App\Models\Session;
+use App\Models\SessionStream;
+use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use MacsiDigital\Zoom\Facades\Zoom;
 
 class SessionsController extends Controller
 {
@@ -75,10 +78,28 @@ class SessionsController extends Controller
      *
      * @param Session $session
      * @return RedirectResponse
+     * @throws Exception
      */
     public function destroy(Session $session)
     {
         $session->delete();
         return \response()->redirectToRoute('admin.sessions.index');
+    }
+
+    /**
+     * Join the zoom meeting of the session
+     *
+     * @param Request $request
+     * @param Session $session
+     * @return RedirectResponse
+     */
+    public function join(Request $request, Session $session) {
+        if ($session->zoom_meeting_id != null) {
+            $meeting = Zoom::meeting()->find($session->zoom_meeting_id);
+            $join_url = $meeting->join_url;
+            return redirect()->to($join_url);
+        } else {
+            return back();
+        }
     }
 }
