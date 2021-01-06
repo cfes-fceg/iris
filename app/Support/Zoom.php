@@ -65,4 +65,8 @@ class Zoom
     {
         return ZoomClient::meeting()->find($id);
     }
+
+    public static function getUser(string $email) {
+        return ZoomClient::user()->find($email);
+    }
 }

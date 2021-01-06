@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Zoom;
 
 use App\Support\Zoom;
 use Carbon\Carbon;
