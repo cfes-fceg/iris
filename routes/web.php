@@ -19,12 +19,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('setlocale/{locale}', LanguageController::class)->name('setLocale');
 
 Route::middleware('lang')->group(function () {
     Route::get('/', function () {
         return view('landing.index');
     });
+
+    Route::get('setlocale/{locale}', LanguageController::class)->name('setLocale');
 
     Route::group(["middleware" => ["auth"]], function () {
         Route::get('/sessions', [UserDashboardController::class, 'index'])->name('sessions');
@@ -34,18 +35,22 @@ Route::middleware('lang')->group(function () {
 
         Route::get("/sessions/{session}/join", [SessionsController::class, 'join'])->name("sessions.join");
     });
+
+
+    Route::group(["prefix" => "admin", "middleware" => ["auth", 'admin'], "as" => "admin."], function () {
+        Route::get("/", [AdminController::class, 'index'])->name('index');
+
+        Route::get("/import", [AdminController::class, 'import'])->name('import');
+        Route::post("/import", [AdminController::class, 'do_import']);
+
+        Route::resource("sessions", SessionsController::class)->except('show');
+        Route::resource("streams", SessionStreamsController::class)->except('show');
+        Route::resource("users", UserAdminController::class)->except('show');
+    });
 });
 
 Route::get("/discord/invite", function () {
     return response()->redirectTo("https://discord.gg/BxEpwCT6FW");
 })->name('discord.invite');
-
-Route::group(["prefix" => "admin", "middleware" => ["auth", 'admin'], "as" => "admin."], function () {
-    Route::get("/", [AdminController::class, 'index'])->name('index');
-
-    Route::resource("sessions", SessionsController::class)->except('show');
-    Route::resource("streams", SessionStreamsController::class)->except('show');
-    Route::resource("users", UserAdminController::class)->except('show');
-});
 
 require __DIR__ . '/auth.php';

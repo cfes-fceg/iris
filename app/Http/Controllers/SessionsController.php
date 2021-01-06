@@ -5,15 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Session\StoreRequest;
 use App\Http\Requests\Session\UpdateRequest;
 use App\Models\Session;
-use App\Models\SessionStream;
 use App\Support\Zoom;
-use Carbon\Carbon;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class SessionsController extends Controller
@@ -53,7 +50,7 @@ class SessionsController extends Controller
             $session->stream->exists
         ) {
             $meeting = Zoom::createMeeting(
-                "CELC - CCLI 2021 | ".$session->title,
+                "CELC - CCLI 2021 | " . $session->title,
                 $session->start,
                 $session->end->diff($session->start),
                 $session->stream->zoom_host,
@@ -86,11 +83,11 @@ class SessionsController extends Controller
     {
         $session->update($request->validated());
         if (!empty($session->zoom_meeting_id)) {
-            $meeting = Zoom::createMeeting(
-                "CELC - CCLI 2021 | ".$session->title,
+            $meeting = Zoom::updateMeeting(
+                $session->zoom_meeting_id,
+                "CELC - CCLI 2021 | " . $session->title,
                 $session->start,
                 $session->end->diff($session->start),
-                $session->stream->zoom_host,
             );
             $session->zoom_meeting_id = $meeting->id;
         }
@@ -115,11 +112,11 @@ class SessionsController extends Controller
     /**
      * Join the zoom meeting of the session
      *
-     * @param Request $request
      * @param Session $session
      * @return RedirectResponse
      */
-    public function join(Request $request, Session $session) {
+    public function join(Session $session)
+    {
         if ($session->zoom_meeting_id != null) {
             return redirect()->to(Zoom::getJoinUrl($session->zoom_meeting_id));
         } else {
