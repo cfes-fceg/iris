@@ -44,8 +44,8 @@ class Session extends Model
     public function formattedDate()
     {
         $date = $this->start->format('l, F d, Y');
-        $startTime = $this->start->format('h:i');
-        $endTime = $this->end->format('h:i');
+        $startTime = $this->start->format('H:i');
+        $endTime = $this->end->format('H:i');
         return $date . " [" . $startTime . " - " . $endTime . "]";
     }
 
