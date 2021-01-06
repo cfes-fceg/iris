@@ -25,7 +25,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach(\App\Models\User::all() as $user)
+            @foreach(\App\Models\User::orderBy('email')->get() as $user)
                 <tr>
                     <td class="border-dashed border-t border-gray-200 userId">
                         <span class="text-gray-700 px-6 py-3 flex items-center">

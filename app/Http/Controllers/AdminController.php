@@ -34,7 +34,7 @@ class AdminController extends Controller
         if (!empty($request->hasFile('sessions'))) {
             Excel::import(new SessionsImport, $request->file('sessions'));
         }
-        return back()->with(['success' => true]);
+        return view('admin.import')->with(['success' => true]);
     }
 
 }

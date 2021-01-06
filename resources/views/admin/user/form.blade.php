@@ -24,7 +24,7 @@
                 </span>
             @enderror
         </div>
-        <div class="my-2">
+        {{--<div class="my-2">
             <x-label for="password" :value="__('Password')"/>
             <x-input id="password" class="block mt-1 w-full" type="password" name="password"
                      :value="old('password', optional($user)->password)"/>
@@ -44,7 +44,7 @@
                              :value="empty(old('password')) ? optional($user)->password : ''"
                              name="password_confirmation" required/>
                 </div>
-        @endif
+        @endif--}}
         <!-- Discord -->
         @if(isset($user) && Auth::user()->is_admin)
             <div class="mb-2">
