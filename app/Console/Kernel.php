@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\CreateAccount;
 use App\Console\Commands\CreateZoomMeeting;
 use App\Console\Commands\Discord\DeleteCommand;
 use App\Console\Commands\Discord\ListRoles;
@@ -21,6 +22,7 @@ class Kernel extends ConsoleKernel
         DeleteCommand::class,
         ListRoles::class,
         CreateZoomMeeting::class,
+        CreateAccount::class,
     ];
 
     /**

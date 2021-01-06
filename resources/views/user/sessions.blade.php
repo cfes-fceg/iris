@@ -70,7 +70,7 @@
                 @isset($session->zoom_meeting_id)
                     <div class="flex justify-between items-center mt-4">
                         <x-btn-link-primary
-                            :href="isset($session->zoom_meeting_id) ? route('streams.join', $session) : '#' ">
+                            :href="isset($session->zoom_meeting_id) ? route('sessions.join', $session) : '#' ">
                             Join Zoom Session
                         </x-btn-link-primary>
                     </div>
