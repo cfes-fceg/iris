@@ -47,12 +47,16 @@ class SessionsController extends Controller
     public function store(StoreRequest $request): RedirectResponse
     {
         $session = Session::make($request->validated());
-        if (empty($session->zoom_meeting_id) && $request->get('create_meeting') == true) {
+        if (
+            empty($session->zoom_meeting_id) &&
+            $request->get('create_meeting') == true &&
+            $session->stream->exists
+        ) {
             $meeting = Zoom::createMeeting(
                 "CELC - CCLI 2021 | ".$session->title,
                 $session->start,
                 $session->end->diff($session->start),
-                "zoom.mars@cfes.ca",
+                $session->stream->zoom_host,
             );
             $session->zoom_meeting_id = $meeting->id;
         }
@@ -86,7 +90,7 @@ class SessionsController extends Controller
                 "CELC - CCLI 2021 | ".$session->title,
                 $session->start,
                 $session->end->diff($session->start),
-                "zoom.mars@cfes.ca",
+                $session->stream->zoom_host,
             );
             $session->zoom_meeting_id = $meeting->id;
         }

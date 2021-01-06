@@ -11,7 +11,7 @@ class UpdateRequest extends FormRequest
         return [
             'title' => ['string', 'max:100'],
             'description' => ['string'],
-            'zoom_meeting_id' => ['integer'],
+            'zoom_host' => ['email', 'nullable', 'unique:session_streams,zoom_host'],
         ];
     }
 

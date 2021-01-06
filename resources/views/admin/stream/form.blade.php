@@ -27,6 +27,17 @@
                 </span>
                 @enderror
             </div>
+            <div class="my-2">
+                <x-label for="zoom_host" :value="__('Zoom host (email)')"/>
+                <x-input type="email" id="zoom_host" class="block mt-1 w-full" name="zoom_host"
+                         autofocus :value="old('zoom_host', optional($stream)->zoom_host)"
+                />
+                @error('zoom_host')
+                <span>
+                    {{ $message }}
+                </span>
+                @enderror
+            </div>
             <div class="flex flex-row-reverse mt-4">
                 <x-button type="submit">
                     Save

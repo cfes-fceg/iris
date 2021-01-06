@@ -11,7 +11,7 @@ class StoreRequest extends FormRequest
         return [
             'title' => ['string', 'max:100', 'required'],
             'description' => ['string'],
-            'zoom_meeting_id' => ['integer', 'required'],
+            'zoom_host' => ['email', 'nullable', 'unique:session_streams,zoom_host'],
         ];
     }
 

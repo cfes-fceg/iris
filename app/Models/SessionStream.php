@@ -12,5 +12,6 @@ class SessionStream extends Model
     protected $fillable = [
         'title',
         'description',
+        'zoom_host'
     ];
 }

@@ -68,7 +68,6 @@ class SessionStreamsController extends Controller
      */
     public function update(UpdateRequest $request, SessionStream $stream): RedirectResponse
     {
-        dd($request);
         $stream->update($request->validated());
         return \response()->redirectToRoute('admin.streams.index');
     }
