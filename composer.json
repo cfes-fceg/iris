@@ -26,7 +26,8 @@
         "laravel/tinker": "^2.5",
         "maatwebsite/excel": "^3.1",
         "macsidigital/laravel-zoom": "^4.1",
-        "skyraptor/restcord": "dev-guzzle-7"
+        "skyraptor/restcord": "dev-guzzle-7",
+        "spatie/laravel-translatable": "^4.6"
     },
     "require-dev": {
         "amirami/localizator": "dev-master",
