@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\Zoom\Zoom\Zoom;
+namespace App\Console\Commands\Zoom;
 
 use App\Support\Zoom;
 use Illuminate\Console\Command;

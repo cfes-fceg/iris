@@ -2,12 +2,13 @@
 
 namespace App\Console;
 
-use App\Console\Commands\Zoom\Zoom\Zoom\CreateAccount;
-use App\Console\Commands\Zoom\Zoom\Zoom\CreateZoomMeeting;
-use App\Console\Commands\Zoom\Zoom\Zoom\Discord\DeleteCommand;
-use App\Console\Commands\Zoom\Zoom\Zoom\Discord\ListRoles;
-use App\Console\Commands\Zoom\Zoom\Zoom\Discord\SyncCommand;
-use App\Console\Commands\Zoom\Zoom\Zoom\GetZoomHostKey;
+use App\Console\Commands\CreateAccount;
+use App\Console\Commands\ImportUsers;
+use App\Console\Commands\Zoom\CreateZoomMeeting;
+use App\Console\Commands\Zoom\GetZoomHostKey;
+use App\Console\Commands\Discord\DeleteCommand;
+use App\Console\Commands\Discord\ListRoles;
+use App\Console\Commands\Discord\SyncCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -25,6 +26,7 @@ class Kernel extends ConsoleKernel
         CreateZoomMeeting::class,
         CreateAccount::class,
         GetZoomHostKey::class,
+        ImportUsers::class,
     ];
 
     /**

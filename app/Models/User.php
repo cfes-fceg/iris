@@ -27,7 +27,8 @@ class User extends Authenticatable
         'engsoc_pos',
         'program',
         'linkedin',
-        'is_active'
+        'is_active',
+        'pronouns'
     ];
 
     /**

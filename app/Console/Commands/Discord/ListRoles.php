@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\Zoom\Zoom\Zoom\Discord;
+namespace App\Console\Commands\Discord;
 
 use App\Support\Discord\Client;
 use Illuminate\Console\Command;

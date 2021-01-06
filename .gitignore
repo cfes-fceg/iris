@@ -17,3 +17,4 @@ yarn-error.log
 /public/css/
 /public/js/
 /_ide_helper.php
+*.csv
