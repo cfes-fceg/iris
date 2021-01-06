@@ -1,11 +1,11 @@
 <x-user-layout title="Sessions">
     <x-slot name="actions">
         <form method="get" action="{{ route('sessions') }}">
-            <div class="flex flex-row items-center">
-                <div class="flex flex-row items-center mx-2">
-                    <x-label for="date" class="mr-2">
-                        {{ __('Schedule for date:') }}
-                    </x-label>
+            <div class="flex flex-col md:flex-row items-center">
+                <x-label for="date" class="mr-2">
+                    {{ __('Schedule for date:') }}
+                </x-label>
+                <div class="flex flex-row items-center mb-4 md:mb-0 mx-2">
                     <a href="{{ $links['prev'] }}" class="p-2 bg-white hover:bg-gray-50 shadow-sm rounded mr-2">
                         <i class="fas fa-chevron-left"></i>
                     </a>
@@ -31,10 +31,10 @@
                             >{{ $stream->title }}</option>
                         @endforeach
                     </x-select>
+                    <x-button class="h-full py-3 mx-2">
+                        Go
+                    </x-button>
                 </x-label>
-                <x-button class="h-full py-3">
-                    Go
-                </x-button>
             </div>
         </form>
     </x-slot>

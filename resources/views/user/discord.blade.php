@@ -5,7 +5,7 @@
         }
     </style>
     <div class="flex flex-row items-center justify-around">
-        <div class="flex flex-col items-center bg-white rounded-md p-5 text-xl shadow-lg w-1/2">
+        <div class="flex flex-col items-center bg-white rounded-md p-5 md:text-xl shadow-lg w-auto mx-4 md:w-3/4">
             @isset(Auth::user()->discord_user_id)
                 <div class="flex flex-row items-center justify-between w-full">
                     <div class="flex flex-col items-center w-full">
@@ -16,7 +16,7 @@
                 <h3 class="font-extrabold text-blue-900">
                     {{__('How to access the CELC 2021 Discord channels:')}}
                 </h3>
-                <div class="flex flex-row items-center justify-between w-full">
+                <div class="flex flex-row items-center justify-between flex-grow">
                     <span class="circle w-9 p-0.5 font-bold h-8 text-white gradient2 text-center">
                         1
                     </span>
@@ -29,15 +29,15 @@
                         </x-btn-link-primary>
                     </span>
                 </div>
-                <div class="flex flex-row items-center justify-between w-full">
-                    <span class="circle w-9 p-0.5 font-bold h-8 text-white gradient2 text-center">
+                <div class="flex flex-row items-center justify-between flex-grow">
+                    <span class="circle w-8 py-0.5 font-bold h-8 text-white gradient2 text-center mr-2">
                         2
                     </span>
                     <div class="flex flex-col items-center">
                         <span class="m-2">
                             {!!  __('Enter the following command into the chat bar of the <strong>#bot-spam</strong> channel:') !!}
                         </span>
-                        <div class="w-3/4 rounded bg-gray-600 p-2 flex flex-row items-center text-gray-300">
+                        <div class="rounded bg-gray-600 p-2 flex flex-row items-center text-gray-300">
                             <pre
                                 class="text-sm w-full text-center font-bold px-2">/celc register {{ Auth::user()->discord_registration_id }}</pre>
                         </div>

@@ -1,7 +1,7 @@
 <!--Hero-->
 
-<div class="container mx-auto flex flex-row w-full items-center">
-    <div class="w-1/2 text-center px-3 lg:px-0">
+<div class="container mx-auto flex flex-col md:flex-row w-full items-center">
+    <div class="w-full md:w-1/2 text-center md:px-3 lg:px-0">
         <h1
             class="my-4 text-2xl md:text-3xl lg:text-5xl font-black leading-tight"
         >
@@ -23,7 +23,8 @@
     </div>
 
     <div class="w-1/2 text-center">
-        <img src="{{ URL::asset('image/video-call-computer.svg') }}" style="height: 62vh" class="mx-auto" alt="Video Call Clipart"/>
+        <img src="{{ URL::asset('image/video-call-computer.svg') }}"
+             style="max-height: 62vh" class="mx-auto" alt="Video Call Clipart"/>
     </div>
 </div>
 

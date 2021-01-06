@@ -1,7 +1,7 @@
 <!--Footer-->
 <footer class="bg-white ">
-    <div class="container mx-auto mt-8 px-8">
-        <div class="w-3/4 flex flex-col md:flex-row py-6 mx-auto justify-between">
+    <div class="container text-xs md:text-base mx-auto md:mt-8 px-8">
+        <div class="lg:w-3/4 flex flex-col md:flex-row py-6 mx-auto justify-between">
             <div class="flex flex-row items-center font-semibold mx-auto">
                 <span class="mt-2 inline-block font-light text-gray-800">
                     &copy; {{ \Carbon\Carbon::now()->year }} {{ __('Canadian Federation of Engineering Students') }}
