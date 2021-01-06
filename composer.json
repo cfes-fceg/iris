@@ -24,13 +24,13 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "macsidigital/laravel-zoom": "^4.1",
-        "skyraptor/restcord": "dev-guzzle-7"
+        "skyraptor/restcord": "dev-guzzle-7",
+        "fakerphp/faker": "^1.9.1"
     },
     "require-dev": {
         "amirami/localizator": "dev-master",
         "barryvdh/laravel-debugbar": "^3.5",
         "facade/ignition": "^2.5",
-        "fakerphp/faker": "^1.9.1",
         "laravel/breeze": "^1.0",
         "laravel/sail": "^0.0.5",
         "mockery/mockery": "^1.4.2",
