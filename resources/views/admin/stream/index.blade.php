@@ -17,6 +17,12 @@
                     description
                 </th>
                 <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs">
+                    zoom host
+                </th>
+                <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs">
+                    host key
+                </th>
+                <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs">
                     actions
                 </th>
             </tr>
@@ -32,6 +38,16 @@
                     <td class="border-dashed border-t border-gray-200 lastName">
                         <span class="text-gray-700 px-6 py-3 flex items-center">
                             {{ $stream->description }}
+                        </span>
+                    </td>
+                    <td class="border-dashed border-t border-gray-200 lastName">
+                        <span class="text-gray-700 px-6 py-3 flex items-center">
+                            {{ $stream->zoom_host ?? '' }}
+                        </span>
+                    </td>
+                    <td class="border-dashed border-t border-gray-200 lastName">
+                        <span class="text-gray-700 px-6 py-3 flex items-center">
+                            {{ !empty($stream->zoom_host) ? \App\Support\Zoom::getUser($stream->zoom_host)->host_key : '' }}
                         </span>
                     </td>
                     <td class="border-dashed border-t border-gray-200 lastName p-3">
