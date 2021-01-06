@@ -61,7 +61,7 @@
                         {{ $session->title }}
                     </h3>
                     <h4 class="text-md text-gray-500">
-                        {{ $session->formattedDate('America/Toronto') }}
+                        {{ $session->formattedDate() }}
                     </h4>
                     <p class="mt-2 text-gray-600">
                         {{ $session->description }}

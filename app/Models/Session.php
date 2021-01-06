@@ -41,11 +41,11 @@ class Session extends Model
         return $this->belongsTo(SessionStream::class, 'session_stream_id');
     }
 
-    public function formattedDate($timezone_str)
+    public function formattedDate()
     {
-        $date = $this->start->shiftTimezone($timezone_str)->format('D, d M Y');
-        $startTime = $this->start->shiftTimezone($timezone_str)->format('h:m');
-        $endTime = $this->end->shiftTimezone($timezone_str)->format('h:m');
+        $date = $this->start->format('l, F d, Y');
+        $startTime = $this->start->format('h:i');
+        $endTime = $this->end->format('h:i');
         return $date . " [" . $startTime . " - " . $endTime . "]";
     }
 
@@ -54,11 +54,11 @@ class Session extends Model
         parent::boot();
 
         self::creating(function ($session) {
-            if ($session->zoom_meeting_id == -1 && $session->stream != null) {
+            if ($session->zoom_meeting_id == -1 && $session->stream != null && $session->stream->zoom_host != null) {
                 $meeting = Zoom::createMeeting(
                     "CELC - CCLI 2021 | " . $session->title,
                     $session->start,
-                    $session->end->diff($session->start),
+                    $session->start->diff($session->end),
                     $session->stream->zoom_host,
                 );
                 $session->zoom_meeting_id = $meeting->id;

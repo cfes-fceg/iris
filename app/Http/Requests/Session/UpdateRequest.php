@@ -20,7 +20,7 @@ class UpdateRequest extends FormRequest
             'description' => ['string'],
             'start' => ['date', 'date_format:Y-m-d\TH:i'],
             'end' => ['date', 'date_format:Y-m-d\TH:i'],
-            'zoom_meeting_id' => ['integer']
+            'zoom_meeting_id' => ['nullable','integer']
         ];
     }
 

@@ -6,8 +6,9 @@ namespace App\Support;
 
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
+use DateInterval;
+use Error;
 use MacsiDigital\Zoom\Facades\Zoom as ZoomClient;
-use phpDocumentor\Reflection\Types\Integer;
 
 class Zoom
 {
@@ -31,13 +32,16 @@ class Zoom
     ];
 
 
-    public static function getJoinUrl($meeting_id): string
+    public static function getJoinUrl(int $meeting_id): string
     {
         $meeting = ZoomClient::meeting()->find($meeting_id);
-        return $meeting->join_url;
+        if(isset($meeting))
+            return $meeting->join_url;
+        else
+            throw new Error("get zoom join url failed with null response");
     }
 
-    public static function createMeeting(string $title, Carbon $start, \DateInterval $duration, string $user_email)
+    public static function createMeeting(string $title, Carbon $start, DateInterval $duration, string $user_email)
     {
         $user = ZoomClient::user()->find($user_email);
 
@@ -50,7 +54,7 @@ class Zoom
         return $user->meetings()->create($attrs);
     }
 
-    public static function updateMeeting(int $meeting_id, string $title, Carbon $start, \DateInterval $duration)
+    public static function updateMeeting(int $meeting_id, string $title, Carbon $start, DateInterval $duration)
     {
         $meeting = ZoomClient::meeting()->find($meeting_id);
 

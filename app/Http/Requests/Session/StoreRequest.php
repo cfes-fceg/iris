@@ -23,7 +23,7 @@ class StoreRequest extends FormRequest
             'description' => ['string'],
             'start' => ['date', 'date_format:Y-m-d\TH:i', 'required'],
             'end' => ['date', 'date_format:Y-m-d\TH:i', 'required'],
-            'zoom_meeting_id' => ['integer']
+            'zoom_meeting_id' => ['nullable','integer']
         ];
     }
 

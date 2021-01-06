@@ -33,13 +33,14 @@ class SessionsImport implements ToModel, WithHeadingRow, WithEvents
             "fr" => $row["description_fr"],
         ];
 
-        if (!empty($row["stream"]))
-            $session->stream = SessionStream::find($row['stream']);
+        if (!empty($row["stream"])) {
+            $session->stream()->associate(SessionStream::find($row['stream']));
+            $session->zoom_meeting_id = -1;
+        }
 
-        $session->start = Carbon::createFromFormat('Y-m-d h:i', $row['date'] . " " . $row['start_est']);
-        $session->end = Carbon::createFromFormat('Y-m-d h:i', $row['date'] . " " . $row['end_est']);
+        $session->start = Carbon::createFromFormat('Y-m-d h:i', $row['date'] . " " . $row['start_est'], 'America/Toronto');
+        $session->end = Carbon::createFromFormat('Y-m-d h:i', $row['date'] . " " . $row['end_est'], 'America/Toronto');
 
-        $session->zoom_meeting_id = -1;
         $session->is_published = true;
 
         return $session;
