@@ -7,6 +7,7 @@ use App\Http\Requests\Session\UpdateRequest;
 use App\Models\Session;
 use App\Models\SessionStream;
 use App\Support\Zoom;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -47,7 +48,12 @@ class SessionsController extends Controller
     {
         $session = Session::make($request->validated());
         if (empty($session->zoom_meeting_id) && $request->get('create_meeting') == true) {
-            $meeting = Zoom::createMeeting("CELC - CCLI 2021 | ".$session->title, "zoom.mars@cfes.ca");
+            $meeting = Zoom::createMeeting(
+                "CELC - CCLI 2021 | ".$session->title,
+                $session->start,
+                $session->end->diff($session->start),
+                "zoom.mars@cfes.ca",
+            );
             $session->zoom_meeting_id = $meeting->id;
         }
         $session->save();
@@ -75,6 +81,17 @@ class SessionsController extends Controller
     public function update(UpdateRequest $request, Session $session)
     {
         $session->update($request->validated());
+        if (!empty($session->zoom_meeting_id)) {
+            $meeting = Zoom::createMeeting(
+                "CELC - CCLI 2021 | ".$session->title,
+                $session->start,
+                $session->end->diff($session->start),
+                "zoom.mars@cfes.ca",
+            );
+            $session->zoom_meeting_id = $meeting->id;
+        }
+        $session->save();
+
         return \response()->redirectToRoute('admin.sessions.index');
     }
 
