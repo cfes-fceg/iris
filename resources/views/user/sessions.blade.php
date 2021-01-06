@@ -9,7 +9,8 @@
                     <a href="{{ $links['prev'] }}" class="p-2 bg-white hover:bg-gray-50 shadow-sm rounded mr-2">
                         <i class="fas fa-chevron-left"></i>
                     </a>
-                    <x-input class="mr-2" id="date" name="date" type="date" value="{{ isset($data['date']) ? $data['date'] : \Carbon\Carbon::now('America/Toronto')->format('Y-m-d') }}"/>
+                    <x-input class="mr-2" id="date" name="date" type="date"
+                             value="{{ isset($data['date']) ? $data['date'] : \Carbon\Carbon::now()->format('Y-m-d') }}"/>
                     <a href="{{ $links['next'] }}" class="p-2 bg-white hover:bg-gray-50 shadow-sm rounded">
                         <i class="fas fa-chevron-right"></i>
                     </a>
@@ -19,7 +20,7 @@
                             {{ __("Stream") }}:
                         </span>
                     <x-select name="stream"
-                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                              class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         <option value>{{ __('All') }}</option>
                         @foreach(\App\Models\SessionStream::all() as $stream)
                             <option
@@ -67,10 +68,10 @@
                         {{ $session->description }}
                     </p>
                 </div>
-                @isset($session->zoom_meeting_id)
+                @if(isset($session->zoom_meeting_id) && $session->showJoinButton())
                     <div class="flex justify-between items-center mt-4">
                         <x-btn-link-primary
-                            :href="isset($session->zoom_meeting_id) ? route('sessions.join', $session) : '#' ">
+                            :href="route('sessions.join', $session)">
                             Join Zoom Session
                         </x-btn-link-primary>
                     </div>
@@ -84,7 +85,7 @@
                 <i class="fas fa-chevron-left"></i>
             </a>
             <span class="p-2 bg-white shadow-md rounded mr-2">
-                {{ $data['date'] ?? \Carbon\Carbon::now('America/Toronto')->format('Y-m-d') }}
+                {{ $data['date'] ?? \Carbon\Carbon::now()->format('Y-m-d') }}
             </span>
             <a href="{{ $links['next'] }}" class="p-2 bg-white hover:bg-gray-50 shadow-md rounded">
                 <i class="fas fa-chevron-right"></i>
@@ -92,33 +93,33 @@
         </div>
     </div>
 
-{{-- Pagination, unused
-    <div class="mt-8">
-        <div class="flex">
-            <a href="#"
-               class="mx-1 px-3 py-2 bg-white text-gray-500 font-medium rounded-md cursor-not-allowed">
-                previous
-            </a>
+    {{-- Pagination, unused
+        <div class="mt-8">
+            <div class="flex">
+                <a href="#"
+                   class="mx-1 px-3 py-2 bg-white text-gray-500 font-medium rounded-md cursor-not-allowed">
+                    previous
+                </a>
 
-            <a href="#"
-               class="mx-1 px-3 py-2 bg-white text-gray-700 font-medium hover:bg-blue-500 hover:text-white rounded-md">
-                1
-            </a>
+                <a href="#"
+                   class="mx-1 px-3 py-2 bg-white text-gray-700 font-medium hover:bg-blue-500 hover:text-white rounded-md">
+                    1
+                </a>
 
-            <a href="#"
-               class="mx-1 px-3 py-2 bg-white text-gray-700 font-medium hover:bg-blue-500 hover:text-white rounded-md">
-                2
-            </a>
+                <a href="#"
+                   class="mx-1 px-3 py-2 bg-white text-gray-700 font-medium hover:bg-blue-500 hover:text-white rounded-md">
+                    2
+                </a>
 
-            <a href="#"
-               class="mx-1 px-3 py-2 bg-white text-gray-700 font-medium hover:bg-blue-500 hover:text-white rounded-md">
-                3
-            </a>
+                <a href="#"
+                   class="mx-1 px-3 py-2 bg-white text-gray-700 font-medium hover:bg-blue-500 hover:text-white rounded-md">
+                    3
+                </a>
 
-            <a href="#"
-               class="mx-1 px-3 py-2 bg-white text-gray-700 font-medium hover:bg-blue-500 hover:text-white rounded-md">
-                Next
-            </a>
-        </div>
-    </div>--}}
+                <a href="#"
+                   class="mx-1 px-3 py-2 bg-white text-gray-700 font-medium hover:bg-blue-500 hover:text-white rounded-md">
+                    Next
+                </a>
+            </div>
+        </div>--}}
 </x-user-layout>

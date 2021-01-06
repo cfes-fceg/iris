@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Session\FilterRequest;
 use App\Http\Requests\User\UpdateRequest;
 use App\Models\Session;
+use Auth;
 use Carbon\Carbon;
-use Request;
-use function DeepCopy\deep_copy;
 
 class   UserDashboardController extends Controller
 {
@@ -21,9 +20,9 @@ class   UserDashboardController extends Controller
             $query = $query->where('session_stream_id', $request->get('stream'));
 
         if ($request->has('date') && $request->get('date') != "")
-            $date = Carbon::createFromFormat('Y-m-d', $request->get('date'), 'America/Toronto');
+            $date = Carbon::createFromFormat('Y-m-d', $request->get('date'));
         else
-            $date = Carbon::now('America/Toronto');
+            $date = Carbon::now();
 
         $query = $query->whereDate('start', '=', $date->format('Y-m-d'));
 
@@ -53,7 +52,7 @@ class   UserDashboardController extends Controller
     }
 
     public function account() {
-        return view('user.account', ["user" => \Auth::user()]);
+        return view('user.account', ["user" => Auth::user()]);
     }
 
     public function discord()

@@ -1,6 +1,5 @@
 <?php
 
-use App\Support\Zoom;
 use Maatwebsite\Excel\ExcelServiceProvider;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -71,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Toronto',
 
     /*
     |--------------------------------------------------------------------------

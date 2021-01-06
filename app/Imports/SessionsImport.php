@@ -38,8 +38,8 @@ class SessionsImport implements ToModel, WithHeadingRow, WithEvents
             $session->zoom_meeting_id = -1;
         }
 
-        $session->start = Carbon::createFromFormat('Y-m-d H:i', $row['date'] . " " . $row['start_est'], 'America/Toronto');
-        $session->end = Carbon::createFromFormat('Y-m-d H:i', $row['date'] . " " . $row['end_est'], 'America/Toronto');
+        $session->start = Carbon::createFromFormat('Y-m-d H:i', $row['date'] . " " . $row['start_est']);
+        $session->end = Carbon::createFromFormat('Y-m-d H:i', $row['date'] . " " . $row['end_est']);
 
         $session->is_published = true;
 

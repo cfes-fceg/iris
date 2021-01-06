@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Support\Zoom;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -64,5 +65,13 @@ class Session extends Model
                 $session->zoom_meeting_id = $meeting->id;
             }
         });
+    }
+
+    public function showJoinButton(): bool
+    {
+        if($this->start->diffInMinutes(Carbon::now(), true) <= 15)
+            return true;
+        else
+            return false;
     }
 }

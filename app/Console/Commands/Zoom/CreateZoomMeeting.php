@@ -17,8 +17,8 @@ class CreateZoomMeeting extends Command
     {
         $meeting = Zoom::createMeeting(
             "CELC - CCLI 2021 | " . "test",
-            Carbon::now('America/Toronto'),
-            Carbon::now('America/Toronto')->diff(Carbon::now()->add(CarbonInterval::hours(2))),
+            Carbon::now(),
+            Carbon::now()->diff(Carbon::now()->add(CarbonInterval::hours(2))),
             $this->argument('email')
         );
 
