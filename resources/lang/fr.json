@@ -10,9 +10,11 @@
     "Conference Dashboard": "Dashboard de la conférence",
     "Confirm": "Confirmer",
     "Confirm Password": "Confirmer le mot de passe",
+    "Create a zoom meeting?": "Créer une réunion zoom?",
     "Description": "Description",
     "Designed & built by Alex Stojda": "Conçu et réalisé par Alex Stojda",
     "Discord": "Discord",
+    "Discord account linked!": "Compte Discord lié !",
     "Discord registration id": "Numéro d'enregistrement Discord",
     "Discord user id": "Identifiant de l'utilisateur Discord",
     "Email": "Email",
@@ -26,6 +28,8 @@
     "French": "Français",
     "Greetings": "Bonjour-Ho",
     "How to access the CELC 2021 Discord channels:": "Comment accéder aux canaux Discord de la CCLI 2021 :",
+    "Import sessions (.csv)": "Importer des sessions  (.csv)",
+    "Import users (.csv)": "Importer des utilisateurs (.csv)",
     "Is active?": "Est active?",
     "Is admin?": "Est admin?",
     "Join the CFES Discord Server": "Rejoindre le serveur Discord de l'FCEG",
@@ -61,5 +65,6 @@
     "Welcome to CELC 2021,": "Bienvenue à la CCLI 2021,",
     "Welcome to the 2021 Canadian Engineering Leadership Conference, hosted by the Zoom University Undergraduate Engineering Society": "Bienvenue à l'édition 2021 de la Conférence canadienne sur le leadership en ingénierie, organisée par l'association Zoom des étudiants en ingénierie de premier cycle.'",
     "Whoops! Something went wrong.": "Oups! Quelque chose a mal tourné.",
-    "Zoom Meeting ID": "ID de la réunion Zoom"
+    "Zoom Meeting ID": "ID de la réunion Zoom",
+    "Zoom host (email)": "Zoom host (email)"
 }
