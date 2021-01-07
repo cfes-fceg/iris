@@ -71,6 +71,7 @@
                 @if(isset($session->zoom_meeting_id) && $session->showJoinButton())
                     <div class="flex justify-between items-center mt-4">
                         <x-btn-link-primary
+                            target="_blank"
                             :href="route('sessions.join', $session)">
                             Join Zoom Session
                         </x-btn-link-primary>

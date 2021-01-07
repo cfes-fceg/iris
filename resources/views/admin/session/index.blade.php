@@ -20,6 +20,9 @@
                     Time
                 </th>
                 <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs">
+                    Zoom
+                </th>
+                <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs">
                     actions
                 </th>
             </tr>
@@ -44,6 +47,22 @@
                         <span class="text-gray-700 p-1 flex items-center whitespace-nowrap">
                             {{ $session->end }}
                         </span>
+                    </td>
+                    <td class="border-dashed border-t border-gray-200 text-center">
+                        @isset($session->zoom_meeting_id)
+                            <span class="text-gray-700 px-6 py-3">
+                                {{ $session->zoom_meeting_id }}
+                            </span>
+                            <br/>
+                            <span class="px-6 py-3">
+                                <a class="underline text-blue-500" target="_blank" href="{{ "https://cfes-ca.zoom.us/meeting/".$session->zoom_meeting_id }}">
+                                    Edit
+                                </a>&nbsp;|&nbsp;
+                                <a class="underline text-blue-500" target="_blank" href="{{ route('sessions.join', $session)  }}">
+                                    Join
+                                </a>
+                            </span>
+                        @endisset
                     </td>
                     <td class="border-dashed border-t border-gray-200 p-3 whitespace-nowrap px-2">
                         <form method="post" action="{{ route('admin.sessions.destroy', $session) }}">
