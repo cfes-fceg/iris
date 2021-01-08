@@ -70,7 +70,7 @@ class Session extends Model
 
     public function showJoinButton(): bool
     {
-        if($this->start->diffInMinutes(Carbon::now(), true) <= 15)
+        if($this->start->sub(15, "minutes")->isBefore(Carbon::now()) && $this->end->add(15, "minutes")->isAfter(Carbon::now()))
             return true;
         else
             return false;
