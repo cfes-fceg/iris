@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\SessionsExport;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LinksPageController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\SessionStreamsController;
 use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\UserDashboardController;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +49,10 @@ Route::middleware('lang')->group(function () {
         Route::post("/import", [AdminController::class, 'do_import']);
 
         Route::resource("sessions", SessionsController::class)->except('show');
+        Route::get('/sessions/export', function () {
+            return Excel::download(new SessionsExport, 'sessions.csv');
+        })->name('sessions.export');
+
         Route::resource("streams", SessionStreamsController::class)->except('show');
         Route::resource("users", UserAdminController::class)->except('show');
     });

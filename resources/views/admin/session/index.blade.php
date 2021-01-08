@@ -1,5 +1,8 @@
 <x-admin-layout title="Sessions">
     <x-slot name="actions">
+        <x-btn-link-primary href="{{ route('admin.sessions.export') }}">
+            Export (.csv)
+        </x-btn-link-primary>
         <x-btn-link-primary href="{{ route('admin.sessions.create') }}">
             New
         </x-btn-link-primary>
