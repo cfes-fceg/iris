@@ -46,8 +46,7 @@ class SessionsController extends Controller
         $session = Session::make($request->validated());
         if (
             empty($session->zoom_meeting_id) &&
-            $request->get('create_meeting') == true &&
-            $session->stream->exists
+            $request->get('create_meeting') == true
         ) {
             $meeting = Zoom::createMeeting(
                 "CELC - CCLI 2021 | " . $session->title,
