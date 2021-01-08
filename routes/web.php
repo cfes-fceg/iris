@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\LinksPageController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\SessionStreamsController;
 use App\Http\Controllers\UserAdminController;
@@ -32,6 +33,8 @@ Route::middleware('lang')->group(function () {
         Route::get('/discord', [UserDashboardController::class, 'discord'])->name('discord');
         Route::get('/account', [UserDashboardController::class, 'account'])->name('account');
         Route::put('/account', [UserDashboardController::class, 'updateAccount']);
+
+        Route::get('/resources', LinksPageController::class)->name('links');
 
         Route::get("/sessions/{session}/join", [SessionsController::class, 'join'])->name("sessions.join");
     });
