@@ -25,7 +25,8 @@ class UpdateRequest extends FormRequest
             'engsoc_pos' => ['nullable', 'string', 'max:255'],
             'program' => ['nullable', 'string', 'max:255'],
             'linkedin' => ['nullable', 'string', 'max:255'],
-            'is_active' => ['required', 'boolean']
+            'is_active' => ['required', 'boolean'],
+            'snl_id' => ['nullable', 'integer']
         ];
     }
 

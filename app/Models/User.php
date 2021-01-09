@@ -28,7 +28,8 @@ class User extends Authenticatable
         'program',
         'linkedin',
         'is_active',
-        'pronouns'
+        'pronouns'.
+        'snl_id'
     ];
 
     /**

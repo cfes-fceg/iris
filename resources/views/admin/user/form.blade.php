@@ -105,6 +105,17 @@
             @enderror
         </div>
         <div class="mb-2">
+            <x-label for="snl_id" :value="__('SNL ID')"/>
+            <x-input id="snl_id" class="block mt-1 w-full" type="number" name="snl_id"
+                     :value="old('snl_id', optional($user)->snl_id)"
+            />
+            @error('snl_id')
+            <span>
+                    {{ $message }}
+                </span>
+            @enderror
+        </div>
+        <div class="mb-2">
             <x-label for="engsoc_pos" :value="__('EngSoc Position')"/>
             <x-input id="engsoc_pos" class="block mt-1 w-full" type="text" name="engsoc_pos"
                      :value="old('engsoc_pos', optional($user)->engsoc_pos)"/>

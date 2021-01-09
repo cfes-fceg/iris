@@ -49,6 +49,10 @@ class DiscordInteractionController extends Controller
             return response()->json($this->discordClient->createInteractionResponseMessage("You aren't registered!"));
         }
         $this->discordClient->assignGuildRole(intval($user_id), $this->discordClient->getCelcRole()->id);
+
+        if ($user->snl_id != null && array_key_exists($user->snl_id, Client::$SNLGroupMap))
+            $this->discordClient->assignGuildRole(intval($user_id), Client::$SNLGroupMap[$user->snl_id]);
+
         return response();
     }
 
@@ -61,6 +65,9 @@ class DiscordInteractionController extends Controller
         $user->update(['discord_user_id' => $user_id]);
         $this->discordClient->assignGuildRole(intval($user_id), $this->discordClient->getCelcRole()->id);
 
+        if ($user->snl_id != null && array_key_exists($user->snl_id, Client::$SNLGroupMap))
+            $this->discordClient->assignGuildRole(intval($user_id), Client::$SNLGroupMap[$user->snl_id]);
+
         return response()->json($this->discordClient->createInteractionResponseMessage("<@{$user_id}> has registered!"));
     }
 
@@ -71,6 +78,9 @@ class DiscordInteractionController extends Controller
             return response()->json($this->discordClient->createInteractionResponseMessage("You aren't registered!"));
         }
         $this->discordClient->removeGuildRole(intval($user_id), $this->discordClient->getCelcRole()->id);
+        if ($user->snl_id != null && array_key_exists($user->snl_id, Client::$SNLGroupMap))
+            $this->discordClient->removeGuildRole(intval($user_id), Client::$SNLGroupMap[$user->snl_id]);
+
         return response();
     }
 
