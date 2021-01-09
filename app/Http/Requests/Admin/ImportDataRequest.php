@@ -11,7 +11,8 @@ class ImportDataRequest extends FormRequest
         return [
             'users' => ['file', 'nullable'],
             'sessions' => ['file', 'nullable'],
-            'streams' => ['file', 'nullable']
+            'streams' => ['file', 'nullable'],
+            'snl' => ['file', 'nullable']
         ];
     }
 

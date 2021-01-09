@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Admin\ImportDataRequest;
 use App\Imports\SessionsImport;
+use App\Imports\SNLImport;
 use App\Imports\UsersImport;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -34,6 +35,11 @@ class AdminController extends Controller
         if (!empty($request->hasFile('sessions'))) {
             Excel::import(new SessionsImport, $request->file('sessions'));
         }
+
+        if (!empty($request->hasFile('snl'))) {
+            Excel::import(new SNLImport, $request->file('snl'));
+        }
+
         return view('admin.import')->with(['success' => true]);
     }
 
