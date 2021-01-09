@@ -53,7 +53,7 @@ class DiscordInteractionController extends Controller
         if ($user->snl_id != null && array_key_exists($user->snl_id, Client::$SNLGroupMap))
             $this->discordClient->assignGuildRole(intval($user_id), Client::$SNLGroupMap[$user->snl_id]);
 
-        return response();
+        return response()->json($this->discordClient->createInteractionResponseMessage("<@{$user_id}> your roles have been updated!"));
     }
 
     private function doRegister($user_id, $registration_code)
@@ -74,14 +74,14 @@ class DiscordInteractionController extends Controller
     private function doLeave($user_id)
     {
         $user = User::where('discord_user_id', '=', $user_id)->get()->first();
-        if (!isset($user) || $user->discord_user_id != null) {
+        if (!isset($user) || $user->discord_user_id == null) {
             return response()->json($this->discordClient->createInteractionResponseMessage("You aren't registered!"));
         }
         $this->discordClient->removeGuildRole(intval($user_id), $this->discordClient->getCelcRole()->id);
         if ($user->snl_id != null && array_key_exists($user->snl_id, Client::$SNLGroupMap))
             $this->discordClient->removeGuildRole(intval($user_id), Client::$SNLGroupMap[$user->snl_id]);
 
-        return response();
+        return response()->json($this->discordClient->createInteractionResponseMessage("Goodbye <@{$user_id}>! We hope you enjoyed CELC 2021"));
     }
 
     private function boot()
