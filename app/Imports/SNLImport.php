@@ -17,7 +17,7 @@ class SNLImport implements ToCollection, WithHeadingRow
             if (isset($user))
                 $user->update(['snl_id' => $row['snl_id']]);
             else
-                Log::warning("SNL group not assigned to email --" . $row['email']);
+                Log::warning("SNL group not assigned to email -> " . $row['email']);
         }
     }
 }

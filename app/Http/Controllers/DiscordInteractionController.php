@@ -45,7 +45,7 @@ class DiscordInteractionController extends Controller
     private function doJoin($user_id)
     {
         $user = User::where('discord_user_id', '=', $user_id)->get()->first();
-        if (!isset($user) || $user->discord_user_id != null) {
+        if (!isset($user) || $user->discord_user_id == null) {
             return response()->json($this->discordClient->createInteractionResponseMessage("You aren't registered!"));
         }
         $this->discordClient->assignGuildRole(intval($user_id), $this->discordClient->getCelcRole()->id);
