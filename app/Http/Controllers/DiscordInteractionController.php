@@ -22,7 +22,6 @@ class DiscordInteractionController extends Controller
     private function processRequest(Request $request)
     {
         $data = $request->json();
-        Log::debug("", $data->all());
 
         if ($data->getInt("type") == InteractionResponseType::PONG) {
             return response()->json(["type" => InteractionResponseType::PONG]);
