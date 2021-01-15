@@ -51,7 +51,7 @@ class SessionsController extends Controller
             $meeting = Zoom::createMeeting(
                 "CELC - CCLI 2021 | " . $session->title,
                 $session->start,
-                $session->end->diff($session->start),
+                $session->start->diff($session->end),
                 $session->stream->zoom_host,
             );
             $session->zoom_meeting_id = $meeting->id;
@@ -86,7 +86,7 @@ class SessionsController extends Controller
                 $session->zoom_meeting_id,
                 "CELC - CCLI 2021 | " . $session->title,
                 $session->start,
-                $session->end->diff($session->start),
+                $session->start->diff($session->end),
             );
             $session->zoom_meeting_id = $meeting->id;
         }
