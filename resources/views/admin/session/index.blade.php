@@ -31,7 +31,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach(\App\Models\Session::whereDate('end', '>', \Carbon\Carbon::now())->orderBy('start')->get() as $session)
+            @foreach(\App\Models\Session::whereDate('end', '>=', \Carbon\Carbon::now())->orderBy('start')->get() as $session)
                 <tr>
                     <td class="border-dashed border-t border-gray-200">
                         <span class="text-gray-700 px-6 py-3 flex items-center">
