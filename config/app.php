@@ -251,6 +251,7 @@ return [
         ],
         'token' => env('DISCORD_BOT_TOKEN'),
         'pubkey' => env('DISCORD_PUBLIC_KEY'),
-    ]
+    ],
+    'maintenance_msg' => env('MAINTENANCE_MSG')
 
 ];
