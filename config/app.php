@@ -252,6 +252,6 @@ return [
         'token' => env('DISCORD_BOT_TOKEN'),
         'pubkey' => env('DISCORD_PUBLIC_KEY'),
     ],
-    'maintenance_msg' => env('MAINTENANCE_MSG')
+    'maintenance_msg' => env('MAINTENANCE_MSG', "We've temporarily disabled the application. Check back again in a few minutes!")
 
 ];
