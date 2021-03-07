@@ -25,7 +25,11 @@ use Maatwebsite\Excel\Facades\Excel;
 
 Route::middleware('lang')->group(function () {
     Route::get('/', function () {
-        return view('landing.index');
+        if(config('app.disable_landing')) {
+            return redirect('sessions');
+        } else {
+            return view('landing.index');
+        }
     });
 
     Route::get('setlocale/{locale}', LanguageController::class)->name('setLocale');
