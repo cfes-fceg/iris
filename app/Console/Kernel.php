@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Console\Commands\CreateAccount;
 use App\Console\Commands\ImportUsers;
+use App\Console\Commands\ListCommands;
 use App\Console\Commands\Zoom\CreateZoomMeeting;
 use App\Console\Commands\Zoom\GetZoomHostKey;
 use App\Console\Commands\Discord\DeleteCommand;
@@ -27,6 +28,7 @@ class Kernel extends ConsoleKernel
         CreateAccount::class,
         GetZoomHostKey::class,
         ImportUsers::class,
+        ListCommands::class,
     ];
 
     /**

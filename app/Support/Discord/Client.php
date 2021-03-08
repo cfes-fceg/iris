@@ -131,15 +131,15 @@ class Client
     {
         $response = Http::withHeaders([
             'Authorization' => "Bot " . $this->token,
-        ])->asJson()->patch($this->replace_params([
+        ])->asJson()->get($this->replace_params([
             'application_id' => $this->application['id'],
             'guild_id' => $this->guild_id
-        ], self::COMMAND_API_PATH), self::CSE_COMMAND);
+        ], self::CREATE_COMMAND_API_PATH), self::CSE_COMMAND);
         if ($response->status() == 200)
             return $response->json();
         else {
             Log::debug($response);
-            throw new Error("Update command failed");
+            throw new Error("List command failed");
         }
     }
 
