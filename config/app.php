@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'CELC 2021'),
+    'name' => env('APP_NAME', 'CSE 2021'),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://celc.cfes.ca'),
+    'url' => env('APP_URL', 'http://cfes.ca'),
 
     'asset_url' => env('ASSET_URL', null),
 

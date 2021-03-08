@@ -49,7 +49,7 @@ class SessionsController extends Controller
             $request->get('create_meeting') == true
         ) {
             $meeting = Zoom::createMeeting(
-                "CELC - CCLI 2021 | " . $session->title,
+                "CSE - CDDI 2021 | " . $session->title,
                 $session->start,
                 $session->start->diff($session->end),
                 $session->stream->zoom_host,
@@ -84,7 +84,7 @@ class SessionsController extends Controller
         if (!empty($session->zoom_meeting_id)) {
             $meeting = Zoom::updateMeeting(
                 $session->zoom_meeting_id,
-                "CELC - CCLI 2021 | " . $session->title,
+                "CSE - CDDI 2021 | " . $session->title,
                 $session->start,
                 $session->start->diff($session->end),
             );

@@ -19,7 +19,7 @@ class DeleteCommand extends Command
             $this->error("command_id is required");
         } else {
             $command_id = $this->argument('command_id');
-            $client->deleteCelcCommand($command_id);
+            $client->deleteCommand($command_id);
             $this->info("Deleted!");
         }
     }

@@ -14,7 +14,7 @@
                 </div>
             @else
                 <h3 class="font-extrabold text-blue-900">
-                    {{__('How to access the CELC 2021 Discord channels:')}}
+                    {{__('How to access the CSE 2021 Discord channels:')}}
                 </h3>
                 <div class="flex flex-row items-center justify-between flex-grow">
                     <span class="circle w-9 p-0.5 font-bold h-8 text-white gradient2 text-center">
@@ -39,7 +39,7 @@
                         </span>
                         <div class="rounded bg-gray-600 p-2 flex flex-row items-center text-gray-300">
                             <pre
-                                class="text-sm w-full text-center font-bold px-2">/celc register {{ Auth::user()->discord_registration_id }}</pre>
+                                class="text-sm w-full text-center font-bold px-2">/cse register {{ Auth::user()->discord_registration_id }}</pre>
                         </div>
                     </div>
                 </div>

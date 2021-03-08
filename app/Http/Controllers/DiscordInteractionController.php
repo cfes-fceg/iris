@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Support\Discord\Client;
 use Discord\InteractionResponseType;
 use Illuminate\Http\Request;
-use Log;
 
 class DiscordInteractionController extends Controller
 {
@@ -48,10 +47,7 @@ class DiscordInteractionController extends Controller
         if (!isset($user) || $user->discord_user_id == null) {
             return response()->json($this->discordClient->createInteractionResponseMessage("You aren't registered!"));
         }
-        $this->discordClient->assignGuildRole(intval($user_id), $this->discordClient->getCelcRole()->id);
-
-        if ($user->snl_id != null && array_key_exists($user->snl_id, Client::$SNLGroupMap))
-            $this->discordClient->assignGuildRole(intval($user_id), Client::$SNLGroupMap[$user->snl_id]);
+        $this->discordClient->assignGuildRole(intval($user_id), $this->discordClient->getRole()->id);
 
         return response()->json($this->discordClient->createInteractionResponseMessage("<@{$user_id}> your roles have been updated!"));
     }
@@ -63,10 +59,7 @@ class DiscordInteractionController extends Controller
             return response()->json($this->discordClient->createInteractionResponseMessage("This code has already been used"));
         }
         $user->update(['discord_user_id' => $user_id]);
-        $this->discordClient->assignGuildRole(intval($user_id), $this->discordClient->getCelcRole()->id);
-
-        if ($user->snl_id != null && array_key_exists($user->snl_id, Client::$SNLGroupMap))
-            $this->discordClient->assignGuildRole(intval($user_id), Client::$SNLGroupMap[$user->snl_id]);
+        $this->discordClient->assignGuildRole(intval($user_id), $this->discordClient->getRole()->id);
 
         return response()->json($this->discordClient->createInteractionResponseMessage("<@{$user_id}> has registered!"));
     }
@@ -77,11 +70,9 @@ class DiscordInteractionController extends Controller
         if (!isset($user) || $user->discord_user_id == null) {
             return response()->json($this->discordClient->createInteractionResponseMessage("You aren't registered!"));
         }
-        $this->discordClient->removeGuildRole(intval($user_id), $this->discordClient->getCelcRole()->id);
-        if ($user->snl_id != null && array_key_exists($user->snl_id, Client::$SNLGroupMap))
-            $this->discordClient->removeGuildRole(intval($user_id), Client::$SNLGroupMap[$user->snl_id]);
+        $this->discordClient->removeGuildRole(intval($user_id), $this->discordClient->getRole()->id);
 
-        return response()->json($this->discordClient->createInteractionResponseMessage("Goodbye <@{$user_id}>! We hope you enjoyed CELC 2021"));
+        return response()->json($this->discordClient->createInteractionResponseMessage("Goodbye <@{$user_id}>! We hope you enjoyed CSE 2021"));
     }
 
     private function boot()

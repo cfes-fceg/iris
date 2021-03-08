@@ -1,6 +1,6 @@
 <div class="bg-white rounded overflow-hidden shadow-lg mx-4">
     <div class="text-center p-6  border-b">
-        <p class="pt-2 text-lg">{{ __('Welcome to CELC 2021,') }}<br/>{{ Auth::user()->name }}</p>
+        <p class="pt-2 text-lg">{{ __('Welcome to CSE 2021,') }}<br/>{{ Auth::user()->name }}</p>
     </div>
     <div class="border-b">
         <a href="{{ route('sessions') }}" class="px-4 py-2 hover:bg-gray-100 flex">
@@ -18,7 +18,7 @@
             </div>
             <div class="pl-3">
                 <p class="text-sm font-medium text-gray-800 leading-none">{{ __('Discord') }}</p>
-                <p class="text-xs text-gray-500">{{ __('Access the CELC 2021 discord') }}</p>
+                <p class="text-xs text-gray-500">{{ __('Access the CSE 2021 discord') }}</p>
             </div>
         </a>
 {{--        <a href="{{ route('links') }}" class="px-4 py-2 hover:bg-gray-100 flex">--}}
