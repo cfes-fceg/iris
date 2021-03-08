@@ -2,8 +2,10 @@
 
 use App\Exports\SessionsExport;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthorizedUsersController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LinksPageController;
+use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\SessionStreamsController;
 use App\Http\Controllers\UserAdminController;
@@ -32,6 +34,15 @@ Route::middleware('lang')->group(function () {
         }
     });
 
+    Route::get('register', function () {
+        return view('auth.check');
+    })->name('register');
+    Route::post('register', [RegistrationController::class, 'check']);
+    Route::get('register/confirm', function () {
+       return view('auth.register');
+    })->name('register.confirm');
+    Route::post('register/confirm', [RegistrationController::class, 'register']);
+
     Route::get('setlocale/{locale}', LanguageController::class)->name('setLocale');
 
     Route::group(["middleware" => ["auth"]], function () {
@@ -51,6 +62,8 @@ Route::middleware('lang')->group(function () {
 
         Route::get("/import", [AdminController::class, 'import'])->name('import');
         Route::post("/import", [AdminController::class, 'do_import']);
+
+        Route::resource('authorizedUsers', AuthorizedUsersController::class)->only(['index', 'store', 'destroy']);
 
         Route::resource("sessions", SessionsController::class)->except('show');
         Route::get('/sessions/export', function () {

@@ -33,6 +33,15 @@
                     <p class="text-xs text-gray-500">Add/manage users</p>
                 </div>
             </a>
+            <a href="{{ route('admin.authorizedUsers.index') }}" class="px-4 py-2 hover:bg-gray-100 flex">
+                <div class="text-gray-800">
+                    <i class="fas fa-at"></i>
+                </div>
+                <div class="pl-3">
+                    <p class="text-sm font-medium text-gray-800 leading-none">Manage Authorized Emails</p>
+                    <p class="text-xs text-gray-500">Add/delete emails allowed to register</p>
+                </div>
+            </a>
             <a href="{{ route('admin.import') }}" class="px-4 py-2 hover:bg-gray-100 flex">
                 <div class="text-gray-800">
                     <i class="fas fa-upload"></i>

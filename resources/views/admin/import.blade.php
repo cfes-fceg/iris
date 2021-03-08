@@ -7,6 +7,11 @@
             </span>
             </div>
         @endif
+        <div class="bg-yellow-100 text-yellow-600 rounded p-3 w-full mb-2">
+            <span class="text-md">
+                <strong>Warning:</strong> Usage of these forms may break the system! Use with extreme caution.
+            </span>
+        </div>
         <form method="post"
               action="{{ route('admin.import') }}"
               enctype="multipart/form-data"
@@ -20,6 +25,32 @@
                     <x-input id="users" class="block mt-1 w-full"
                              type="file" name="users"/>
                     @error('users')
+                    <span>
+                        {{ $message }}
+                    </span>
+                    @enderror
+                </div>
+                <div class="flex flex-row-reverse mx-2">
+                    <x-button type="submit" name='submit'>
+                        import
+                    </x-button>
+                </div>
+            </div>
+        </form>
+        <form class="mt-2"
+              method="post"
+              action="{{ route('admin.import') }}"
+              enctype="multipart/form-data"
+        >
+            @csrf
+            @method('POST')
+            <div class="flex flex-row w-full items-center">
+
+                <x-label class="mx-2" for="authorizedUsers" :value="__('Import Authorized Emails (.csv)').':'"/>
+                <div class="mx-2">
+                    <x-input id="authorizedUsers" class="block mt-1 w-full"
+                             type="file" name="authorizedUsers"/>
+                    @error('authorizedUsers')
                     <span>
                         {{ $message }}
                     </span>
