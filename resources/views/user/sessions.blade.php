@@ -45,41 +45,78 @@
             </span>
         </div>
     @endif
-    @foreach($sessions as $session)
-        <div class="mb-6">
-            <div class="px-10 py-6 bg-white rounded-lg shadow-md">
-                <div class="flex justify-between items-center">
-                            <span class="font-light text-gray-600">
-                                {{ $session->start->shortRelativeDiffForHumans()}}
-                            </span>
-                    <a href="#"
-                       class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-gray-500">
-                        {{ isset($session->stream) ? $session->stream->title : __('All Streams') }}
-                    </a>
-                </div>
-                <div class="mt-2">
-                    <h3 class="text-2xl text-gray-700 font-bold">
-                        {{ $session->title }}
-                    </h3>
-                    <h4 class="text-md text-gray-500">
-                        {{ $session->formattedDate() }}
-                    </h4>
-                    <p class="mt-2 text-gray-600">
-                        {{ $session->description }}
-                    </p>
-                </div>
-                @if(isset($session->zoom_meeting_id) && $session->showJoinButton())
-                    <div class="flex justify-between items-center mt-4">
-                        <x-btn-link-primary
-                            target="_blank"
-                            :href="route('sessions.join', $session)">
-                            Join Zoom Session
-                        </x-btn-link-primary>
+
+    <div class="flex flex-row">
+        @foreach($sessions->groupBy(['session_stream_id']) as $group)
+            <div class="flex flex-col p-2">
+                <h2 class="mb-2 font-bold text-xl">
+                    @isset($group->first()->stream)
+                        {{ $group->first()->stream->title }}
+                    @else
+                        {{ __('Other sessions') }}
+                    @endisset
+                </h2>
+                @foreach($group as $session)
+                    <div class="mb-6">
+                        <div class="px-10 py-6 bg-white rounded-lg shadow-md">
+                            <div class="flex justify-between items-center">
+                                <span class="font-light text-gray-600">
+                                    {{ $session->start->shortRelativeDiffForHumans()}}
+                                </span>
+                                @isset($session->stream)
+                                    <span
+                                        class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded">
+                                        {{ $session->stream->title }}
+                                    </span>
+                                @endisset
+                            </div>
+                            <div class="mt-2">
+                                <h3 class="text-xl text-gray-700 font-bold">
+                                    {{ $session->title }}
+                                </h3>
+                                <h4 class="text-md text-gray-500">
+                                    {{ $session->formattedDate() }}
+                                </h4>
+                            </div>
+
+                            <div class="flex flex-row justify-between mt-2">
+                                <x-modal :title="$session->title">
+                                    <x-slot name="trigger">
+                                        <x-button>
+                                            {{ __('More info') }}
+                                        </x-button>
+                                    </x-slot>
+
+                                    <p class="mt-2 text-gray-600">
+                                        {{ $session->description }}
+                                    </p>
+                                    @if( isset($session->zoom_meeting_id) && $session->showJoinButton() )
+                                        <div class="flex justify-between items-center mt-4">
+                                            <x-btn-link-primary
+                                                target="_blank"
+                                                :href="route('sessions.join', $session)">
+                                                Join Zoom Session
+                                            </x-btn-link-primary>
+                                        </div>
+                                    @endif
+                                </x-modal>
+                                @if(isset($session->zoom_meeting_id) && $session->showJoinButton())
+                                        <x-btn-link-primary
+                                            target="_blank"
+                                            :href="route('sessions.join', $session)">
+                                            Join Zoom Session
+                                        </x-btn-link-primary>
+                                @endif
+                            </div>
+
+                        </div>
                     </div>
-                @endisset
+                @endforeach
             </div>
-        </div>
-    @endforeach
+        @endforeach
+    </div>
+
+    {{-- Footer date nav    --}}
     <div class="w-full flex flex-row justify-around">
         <div>
             <a href="{{ $links['prev'] }}" class="p-2 bg-white hover:bg-gray-50 shadow-md rounded mr-2">
@@ -93,34 +130,4 @@
             </a>
         </div>
     </div>
-
-    {{-- Pagination, unused
-        <div class="mt-8">
-            <div class="flex">
-                <a href="#"
-                   class="mx-1 px-3 py-2 bg-white text-gray-500 font-medium rounded-md cursor-not-allowed">
-                    previous
-                </a>
-
-                <a href="#"
-                   class="mx-1 px-3 py-2 bg-white text-gray-700 font-medium hover:bg-blue-500 hover:text-white rounded-md">
-                    1
-                </a>
-
-                <a href="#"
-                   class="mx-1 px-3 py-2 bg-white text-gray-700 font-medium hover:bg-blue-500 hover:text-white rounded-md">
-                    2
-                </a>
-
-                <a href="#"
-                   class="mx-1 px-3 py-2 bg-white text-gray-700 font-medium hover:bg-blue-500 hover:text-white rounded-md">
-                    3
-                </a>
-
-                <a href="#"
-                   class="mx-1 px-3 py-2 bg-white text-gray-700 font-medium hover:bg-blue-500 hover:text-white rounded-md">
-                    Next
-                </a>
-            </div>
-        </div>--}}
 </x-user-layout>

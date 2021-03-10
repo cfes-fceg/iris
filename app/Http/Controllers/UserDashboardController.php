@@ -36,7 +36,7 @@ class   UserDashboardController extends Controller
 
         return view('user.sessions')->with(
             [
-                "sessions" => $query->get(),
+                "sessions" => $query->with('stream')->get(),
                 "data" => $request->validated(),
                 "links" => [
                     "prev" => route('sessions', $prevParams),
