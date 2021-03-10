@@ -43,6 +43,7 @@
                         </div>
                     </div>
                 </div>
+                <img class="mt-4" src="/image/cse-discord-command.png" alt="{{ __('Discord command example') }}">
             @endisset
         </div>
     </div>

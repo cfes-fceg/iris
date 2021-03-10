@@ -3,7 +3,9 @@
         <form method="get" action="{{ route('sessions') }}">
             <div class="flex flex-col md:flex-row items-center">
                 <x-label for="date" class="mr-2">
-                    {{ __('Schedule for date:') }}
+                    <span class="text-lg font-extrabold">
+                        {{ __('Date:') }}
+                    </span>
                 </x-label>
                 <div class="flex flex-row items-center mb-4 md:mb-0 mx-2">
                     <a href="{{ $links['prev'] }}" class="p-2 bg-white hover:bg-gray-50 shadow-sm rounded mr-2">
@@ -16,7 +18,7 @@
                     </a>
                 </div>
                 <x-label class="flex flex-row items-center mr-2">
-                        <span class="mr-2">
+                    <span class="text-lg font-extrabold mr-2">
                             {{ __("Stream") }}:
                         </span>
                     <x-select name="stream"
@@ -46,9 +48,9 @@
         </div>
     @endif
 
-    <div class="flex flex-row">
+    <div class="flex flex-row justify-evenly">
         @foreach($sessions->groupBy(['session_stream_id']) as $group)
-            <div class="flex flex-col p-2">
+            <div class="flex-1 flex-col px-2">
                 <h2 class="mb-2 font-bold text-xl">
                     @isset($group->first()->stream)
                         {{ $group->first()->stream->title }}
@@ -57,25 +59,19 @@
                     @endisset
                 </h2>
                 @foreach($group as $session)
-                    <div class="mb-6">
+                    <div class="my-4">
                         <div class="px-10 py-6 bg-white rounded-lg shadow-md">
                             <div class="flex justify-between items-center">
                                 <span class="font-light text-gray-600">
                                     {{ $session->start->shortRelativeDiffForHumans()}}
                                 </span>
-                                @isset($session->stream)
-                                    <span
-                                        class="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded">
-                                        {{ $session->stream->title }}
-                                    </span>
-                                @endisset
                             </div>
                             <div class="mt-2">
-                                <h3 class="text-xl text-gray-700 font-bold">
+                                <h3 class="text-lg text-gray-700 font-bold">
                                     {{ $session->title }}
                                 </h3>
                                 <h4 class="text-md text-gray-500">
-                                    {{ $session->formattedDate() }}
+                                    [{{$session->start->format('H:i')}} - {{$session->end->format('H:i')}}]
                                 </h4>
                             </div>
 
@@ -101,11 +97,11 @@
                                     @endif
                                 </x-modal>
                                 @if(isset($session->zoom_meeting_id) && $session->showJoinButton())
-                                        <x-btn-link-primary
-                                            target="_blank"
-                                            :href="route('sessions.join', $session)">
-                                            Join Zoom Session
-                                        </x-btn-link-primary>
+                                    <x-btn-link-primary
+                                        target="_blank"
+                                        :href="route('sessions.join', $session)">
+                                        Join Zoom Session
+                                    </x-btn-link-primary>
                                 @endif
                             </div>
 
