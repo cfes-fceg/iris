@@ -2,6 +2,7 @@
     <x-slot name="actions">
         <form method="post"
               action="{{ route('admin.authorizedUsers.store') }}">
+            @csrf
             <div class="flex flex-row items-center">
                 <x-label for="email" :value="__('Email')"/>
                 <div class="mx-2">
