@@ -15,3 +15,7 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
     require('tailwindcss'),
     require('autoprefixer'),
 ]).sass('resources/scss/style.scss', 'public/css');
+
+if (mix.inProduction()) {
+    mix.version();
+}
