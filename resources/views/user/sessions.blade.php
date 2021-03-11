@@ -49,7 +49,7 @@
     @endif
 
     <div class="flex flex-row justify-evenly">
-        @foreach($sessions->groupBy(['session_stream_id']) as $group)
+        @foreach($sessions->sortBy('session_stream_id')->groupBy(['session_stream_id']) as $group)
             <div class="flex-1 flex-col px-2">
                 <h2 class="mb-2 font-bold text-xl">
                     @isset($group->first()->stream)
