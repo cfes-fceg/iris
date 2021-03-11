@@ -41,5 +41,6 @@
         @include('layouts.footer')
     </div>
 </div>
+{{ $bodyEnd ?? "" }}
 </body>
 </html>

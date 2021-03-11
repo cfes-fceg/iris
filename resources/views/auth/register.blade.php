@@ -14,6 +14,12 @@
             action="{{ route('register.confirm') }}"
         >
         @csrf
+            <input type="hidden" name="recaptcha_token" id="recaptcha_token">
+            @if($errors->has('recaptcha_token'))
+                <div class="p-2 text-red-600">
+                    {{$errors->first('recaptcha_token')}}
+                </div>
+            @endif
 
         <!-- Email Address -->
             <div class="mt-4">
@@ -58,4 +64,14 @@
             </div>
         </form>
     </x-auth-card>
+    <x-slot name="bodyEnd">
+        <script src="https://www.google.com/recaptcha/api.js?render={{ config('app.recaptcha.key') }}"></script>
+        <script>
+            grecaptcha.ready(function () {
+                grecaptcha.execute('{{ config('app.recaptcha.key')  }}').then(function (token) {
+                    document.getElementById("recaptcha_token").value = token;
+                });
+            });
+        </script>
+    </x-slot>
 </x-guest-layout>

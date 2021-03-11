@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AuthorizedUser;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Rules\ReCaptchaRule;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -26,7 +27,8 @@ class RegistrationController extends Controller
     public function check(Request $request)
     {
         $request->validate([
-            'email' => ['required', 'email', 'exists:authorized_users,email']
+            'email' => ['required', 'email', 'exists:authorized_users,email'],
+            'recaptcha_token' => ['required', new   ReCaptchaRule($request->recaptcha_token)],
         ]);
 
         Session::push(self::$SESSION_KEY, $request->email);

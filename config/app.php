@@ -252,6 +252,13 @@ return [
         'token' => env('DISCORD_BOT_TOKEN'),
         'pubkey' => env('DISCORD_PUBLIC_KEY'),
     ],
+
+    'recaptcha' => [
+        'hostname' => env('GOOGLE_CAPTCHA_HOSTNAME'),
+        'key' => env('GOOGLE_CAPTCHA_PUBLIC_KEY'),
+        'secret' => env('GOOGLE_CAPTCHA_PRIVATE_KEY'),
+    ],
+
     'maintenance_msg' => env('MAINTENANCE_MSG', "We've temporarily disabled the application. Check back again in a few minutes!"),
     'disable_landing' => env('DISABLE_LANDING', false)
 ];
