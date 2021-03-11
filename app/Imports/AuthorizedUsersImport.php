@@ -4,8 +4,9 @@ namespace App\Imports;
 
 use App\Models\AuthorizedUser;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class AuthorizedUsersImport implements ToModel
+class AuthorizedUsersImport implements ToModel, WithHeadingRow
 {
     /**
     * @param array $row
