@@ -27,6 +27,16 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
 
     <link rel="stylesheet" href=" {{ asset('css/style.css') }}">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('app.analytics') }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{ config('app.analytics') }}');
+    </script>
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100 flex flex-col justify-between">

@@ -253,6 +253,7 @@ return [
         'pubkey' => env('DISCORD_PUBLIC_KEY'),
     ],
 
+    'analytics' => env('GOOGLE_ANALYTICS'),
     'recaptcha' => [
         'hostname' => env('GOOGLE_CAPTCHA_HOSTNAME'),
         'key' => env('GOOGLE_CAPTCHA_PUBLIC_KEY'),
