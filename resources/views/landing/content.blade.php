@@ -23,7 +23,7 @@
     </div>
 
     <div class="w-1/2 text-center">
-        <img src="{{ URL::asset('image/video-call-computer.svg') }}"
+        <img src="{{ Storage::disk('assets')->url('image/video-call-computer.svg') }}"
              style="max-height: 62vh" class="mx-auto" alt="Video Call Clipart"/>
     </div>
 </div>
