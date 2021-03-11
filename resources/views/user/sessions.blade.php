@@ -71,7 +71,7 @@
                                     {{ $session->title }}
                                 </h3>
                                 <h4 class="text-md text-gray-500">
-                                    [{{$session->start->format('H:i')}} - {{$session->end->format('H:i')}}]
+                                    [{{$session->start->format('H:i')}} - {{$session->end->format('H:i')}}] {{$session->start->tz()}}
                                 </h4>
                             </div>
 
