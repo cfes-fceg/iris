@@ -18,6 +18,9 @@
             </div>
             <div class="my-2">
                 <x-label for="stream" :value="__('Session Stream')"/>
+                @if(isset($session) && $session->zoom_meeting_id != null)
+                    <p class="p-1 bg-yellow-50 rounded-md"><strong>Note:</strong> Changing this setting will not change the zoom host for the meeting</p>
+                @endif
                 <x-select id="stream" class="block mt-1 w-full" type="datetime-local" name="session_stream_id">
                     <option value="">Select a stream...</option>
                     @foreach(\App\Models\SessionStream::all() as $stream)
