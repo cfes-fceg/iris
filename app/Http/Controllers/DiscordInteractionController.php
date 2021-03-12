@@ -55,7 +55,10 @@ class DiscordInteractionController extends Controller
     private function doRegister($user_id, $registration_code)
     {
         $user = User::where('discord_registration_id', '=', $registration_code)->get()->first();
-        if (!isset($user) || $user->discord_user_id != null) {
+        if(!isset($user)) {
+            return response()->json($this->discordClient->createInteractionResponseMessage("I couldn't find that code. Did you enter it correctly?"));
+        }
+        if ($user->discord_user_id != null) {
             return response()->json($this->discordClient->createInteractionResponseMessage("This code has already been used"));
         }
         $user->update(['discord_user_id' => $user_id]);
