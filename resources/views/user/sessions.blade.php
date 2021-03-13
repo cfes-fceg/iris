@@ -60,7 +60,7 @@
                 </h2>
                 @foreach($group->sortBy('start') as $session)
                     <div class="my-4">
-                        <div class="px-10 py-6 bg-white rounded-lg shadow-md">
+                        <div class="px-4 py-4 bg-white rounded-lg shadow-md">
                             <div class="flex justify-between items-center">
                                 <span class="font-light text-gray-600">
                                     {{ $session->start->shortRelativeDiffForHumans()}}

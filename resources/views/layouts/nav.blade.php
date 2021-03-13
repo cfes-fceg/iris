@@ -1,5 +1,5 @@
 <!--Nav-->
-<nav id="header" class="w-full z-30 top-0 text-white py-1 lg:py-6">
+<nav id="header" class="w-full z-5 top-0 text-white py-1 lg:py-6">
     <div
         class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-2 lg:py-6"
     >
@@ -29,7 +29,7 @@
         </div>
 
         <div
-            class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 text-black p-4 lg:p-0 z-20"
+            class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 text-black p-4 lg:p-0"
             id="nav-content"
         >
             <ul class="list-reset lg:flex justify-end flex-1 items-center">
