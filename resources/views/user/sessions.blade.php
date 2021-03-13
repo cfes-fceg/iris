@@ -58,7 +58,7 @@
                         {{ __('Other sessions') }}
                     @endisset
                 </h2>
-                @foreach($group as $session)
+                @foreach($group->sortBy('start') as $session)
                     <div class="my-4">
                         <div class="px-10 py-6 bg-white rounded-lg shadow-md">
                             <div class="flex justify-between items-center">
