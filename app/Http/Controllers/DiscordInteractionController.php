@@ -13,9 +13,13 @@ class DiscordInteractionController extends Controller
 
     public function __invoke(Request $request)
     {
-        $this->boot();
-        $this->discordClient->validateSignature($request);
-        return $this->processRequest($request);
+        try {
+            $this->boot();
+            $this->discordClient->validateSignature($request);
+            return $this->processRequest($request);
+        } catch (\Exception $e) {
+            return response()->json($this->discordClient->createInteractionResponseMessage("Sorry, something went wrong there. If you continue to see this message, contact an admin."));
+        }
     }
 
     private function processRequest(Request $request)
@@ -45,7 +49,7 @@ class DiscordInteractionController extends Controller
     {
         $user = User::where('discord_user_id', '=', $user_id)->get()->first();
         if (!isset($user) || $user->discord_user_id == null) {
-            return response()->json($this->discordClient->createInteractionResponseMessage("You aren't registered!"));
+            return response()->json($this->discordClient->createInteractionResponseMessage("<@{$user_id}> You aren't registered!"));
         }
         $this->discordClient->assignGuildRole(intval($user_id), $this->discordClient->getRole()->id);
 
@@ -56,10 +60,10 @@ class DiscordInteractionController extends Controller
     {
         $user = User::where('discord_registration_id', '=', $registration_code)->get()->first();
         if(!isset($user)) {
-            return response()->json($this->discordClient->createInteractionResponseMessage("I couldn't find that code. Did you enter it correctly?"));
+            return response()->json($this->discordClient->createInteractionResponseMessage("<@{$user_id}> I couldn't find that code. Did you enter it correctly?"));
         }
         if ($user->discord_user_id != null) {
-            return response()->json($this->discordClient->createInteractionResponseMessage("This code has already been used"));
+            return response()->json($this->discordClient->createInteractionResponseMessage("<@{$user_id}> This code has already been used"));
         }
         $user->update(['discord_user_id' => $user_id]);
         $this->discordClient->assignGuildRole(intval($user_id), $this->discordClient->getRole()->id);
@@ -71,7 +75,7 @@ class DiscordInteractionController extends Controller
     {
         $user = User::where('discord_user_id', '=', $user_id)->get()->first();
         if (!isset($user) || $user->discord_user_id == null) {
-            return response()->json($this->discordClient->createInteractionResponseMessage("You aren't registered!"));
+            return response()->json($this->discordClient->createInteractionResponseMessage("<@{$user_id}> You aren't registered!"));
         }
         $this->discordClient->removeGuildRole(intval($user_id), $this->discordClient->getRole()->id);
 
