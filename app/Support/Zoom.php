@@ -13,7 +13,7 @@ use MacsiDigital\Zoom\Facades\Zoom as ZoomClient;
 class Zoom
 {
     private static array $DefaultMeeting = [
-        'topic' => 'CSE 2021 | CDDI 2021',
+        'topic' => 'µConference Meeting',
         'type' => 2,
         'settings' => [
             "join_before_host" => true,

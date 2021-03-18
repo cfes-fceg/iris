@@ -21,11 +21,10 @@ class Client
     private const CREATE_COMMAND_API_PATH = self::API_BASE_URI . "applications/:application_id/guilds/:guild_id/commands";
     private const COMMAND_API_PATH = self::API_BASE_URI . "applications/:application_id/guilds/:guild_id/commands/:command_id";
 
-    private const LIST_GUILD_ROLES = self::API_BASE_URI . "guilds/:guild_id/roles";
+//    private const LIST_GUILD_ROLES = self::API_BASE_URI . "guilds/:guild_id/roles";
 
-    private const CSE_COMMAND = [
-        "name" => "cse",
-        "description" => "Conference interactions for CSE 2021",
+    private const CONFERENCE_COMMAND = [
+        "name" => "uCon",
         "options" => [
             [
                 "name" => "register",
@@ -34,7 +33,7 @@ class Client
                 "options" => [
                     [
                         "name" => "user-code",
-                        "description" => "Unique access code provided by the conference web-app",
+                        "description" => "Unique access code provided in your µConference account",
                         "type" => 3,
                         "required" => true
                     ]
@@ -42,27 +41,26 @@ class Client
             ],
             [
                 "name" => "leave",
-                "description" => "Leave CSE 2021 & related Discord channels",
+                "description" => "Leave conference Discord channels",
                 "type" => 1
             ],
             [
                 "name" => "join",
-                "description" => "Join CSE 2021 & related Discord channels",
+                "description" => "Join conference Discord channels",
                 "type" => 1
             ]
         ]
     ];
 
-    private $token;
-    public $application;
+    private string $token;
+    public array $application;
 
-    private $client;
-    private $guild_id;
+    private DiscordClient $client;
+    private int $guild_id;
 
     /**
      * HTTP client constructor.
      *
-     * @param string $token
      */
     public function __construct()
     {
@@ -102,7 +100,7 @@ class Client
             'application_id' => $this->application['id'],
             'command_id' => $command_id,
             'guild_id' => $this->guild_id
-        ], self::COMMAND_API_PATH), self::CSE_COMMAND);
+        ], self::COMMAND_API_PATH), $this->prepareCommandObj());
         if ($response->status() == 200)
             return $response->json();
         else {
@@ -118,7 +116,7 @@ class Client
         ])->asJson()->post($this->replace_params([
             'application_id' => $this->application['id'],
             'guild_id' => $this->guild_id
-        ], self::CREATE_COMMAND_API_PATH), self::CSE_COMMAND);
+        ], self::CREATE_COMMAND_API_PATH), $this->prepareCommandObj());
         if ($response->status() == 201)
             return $response->json();
         else {
@@ -134,7 +132,7 @@ class Client
         ])->asJson()->get($this->replace_params([
             'application_id' => $this->application['id'],
             'guild_id' => $this->guild_id
-        ], self::CREATE_COMMAND_API_PATH), self::CSE_COMMAND);
+        ], self::CREATE_COMMAND_API_PATH));
         if ($response->status() == 200)
             return $response->json();
         else {
@@ -156,13 +154,6 @@ class Client
             Log::debug($response);
             throw new Error("Delete command failed");
         }
-    }
-
-    private function request()
-    {
-        return Http::withHeaders([
-            'Authorization' => "Bot " . $this->token,
-        ])->asJson();
     }
 
     /**
@@ -194,7 +185,7 @@ class Client
     public function getRole()
     {
         foreach ($this->getGuildRoles() as $role) {
-            if ($role->name == "CSE // CDDI 2021")
+            if ($role->name == config('app.discord.conference_role'))
                 return $role;
         }
         return null;
@@ -214,4 +205,12 @@ class Client
     {
         $this->client->guild->removeGuildMemberRole(['user.id' => $user_id, 'role.id' => $role_id, 'guild.id' => $this->guild_id]);
     }
+
+    private function prepareCommandObj(): array
+    {
+        $command = self::CONFERENCE_COMMAND;
+        $command['description'] = "Use these commands to register & access channels for ".config('app.name');
+        return $command;
+    }
+
 }

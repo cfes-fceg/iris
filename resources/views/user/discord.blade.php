@@ -14,7 +14,7 @@
                 </div>
             @else
                 <h3 class="font-extrabold text-blue-900">
-                    {{__('How to access the CSE 2021 Discord channels:')}}
+                    {{__('How to access the Discord channels for ').config('app.name')}}
                 </h3>
                 <div class="flex flex-row items-center justify-between flex-grow">
                     <span class="circle w-9 p-0.5 font-bold h-8 text-white gradient2 text-center">
@@ -22,7 +22,7 @@
                     </span>
                     <span class="m-2 w-full flex flex-col items-center">
                         <span class="m-2">
-                            {!!  __('Join the server, if you have not already done so:') !!}
+                            {!!  __('Join the CFES server, if you have not already done so:') !!}
                         </span>
                         <x-btn-link-primary href="{{ route('discord.invite') }}">
                             {{__('Join the CFES Discord Server')}}
@@ -35,15 +35,14 @@
                     </span>
                     <div class="flex flex-col items-center">
                         <span class="m-2">
-                            {!!  __('Enter the following command into the chat bar of the <strong>#bot-spam</strong> channel:') !!}
+                            {!!  __('Enter the following command & your <strong>unique code</strong> <br/> into the chat bar of the <strong>#bot-spam</strong> channel:') !!}
                         </span>
                         <div class="rounded bg-gray-600 p-2 flex flex-row items-center text-gray-300">
                             <pre
-                                class="text-sm w-full text-center font-bold px-2">/cse register {{ Auth::user()->discord_registration_id }}</pre>
+                                class="text-sm w-full text-center font-bold px-2">/ucon register {{ Auth::user()->discord_registration_id }}</pre>
                         </div>
                     </div>
                 </div>
-                <img class="mt-4" src="{{ Storage::disk('assets')->url('image/cse-discord-command.png') }}" alt="{{ __('Discord command example') }}">
             @endisset
         </div>
     </div>

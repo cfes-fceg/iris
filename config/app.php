@@ -251,6 +251,7 @@ return [
         ],
         'token' => env('DISCORD_BOT_TOKEN'),
         'pubkey' => env('DISCORD_PUBLIC_KEY'),
+        'conference_role' => env('DISCORD_CONFERENCE_ROLE')
     ],
 
     'analytics' => env('GOOGLE_ANALYTICS'),

@@ -58,7 +58,7 @@ class Session extends Model
         self::creating(function ($session) {
             if ($session->zoom_meeting_id == -1 && $session->stream != null && $session->stream->zoom_host != null) {
                 $meeting = Zoom::createMeeting(
-                    "CSE - CDDI 2021 | " . $session->title,
+                    config('app.name')." | " . $session->title,
                     $session->start,
                     $session->start->diff($session->end),
                     $session->stream->zoom_host,

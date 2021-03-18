@@ -8,7 +8,7 @@
                 class="text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
                 href="{{ route('sessions') }}"
             >
-                <x-application-logo style="height: 4em;"/>
+                <x-application-logo style="width: 8em;"/>
             </a>
         </div>
 

@@ -1,6 +1,6 @@
 <!--suppress ALL -->
 <img {{ $attributes->merge([
-    'src' => Storage::disk('assets')->url('image/cse2021-logo.svg'),
-    'alt' => __("CSE 2021 Logo")
+    'src' => Storage::disk('assets')->url('image/cfes-logo.svg'),
+    'alt' => config('app.name')." Logo"
 ]) }}/>
 

@@ -16,7 +16,7 @@ class CreateZoomMeeting extends Command
     public function handle()
     {
         $meeting = Zoom::createMeeting(
-            "CSE - CDDI 2021 | " . "test",
+            config('app.name')." | test",
             Carbon::now(),
             Carbon::now()->diff(Carbon::now()->add(CarbonInterval::hours(2))),
             $this->argument('email')

@@ -75,7 +75,7 @@ class DiscordInteractionController extends Controller
         }
         $this->discordClient->removeGuildRole(intval($user_id), $this->discordClient->getRole()->id);
 
-        return response()->json($this->discordClient->createInteractionResponseMessage("Goodbye <@{$user_id}>! We hope you enjoyed CSE 2021"));
+        return response()->json($this->discordClient->createInteractionResponseMessage("Goodbye <@{$user_id}>! We hope you enjoyed ".config('app.name')));
     }
 
     private function boot()

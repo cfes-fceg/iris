@@ -28,15 +28,6 @@
                 <p class="text-xs text-gray-500">{{ __('Access the discord for').' '.config('app.name') }}</p>
             </div>
         </a>
-        {{--        <a href="{{ route('links') }}" class="px-4 py-2 hover:bg-gray-100 flex">--}}
-        {{--            <div class="text-gray-800">--}}
-        {{--                <i class="fas fa-folder"></i>--}}
-        {{--            </div>--}}
-        {{--            <div class="pl-3">--}}
-        {{--                <p class="text-sm font-medium text-gray-800 leading-none">{{ __('Resources') }}</p>--}}
-        {{--                <p class="text-xs text-gray-500">{{ __('Conference Resources') }}</p>--}}
-        {{--            </div>--}}
-        {{--        </a>--}}
         <a href="{{ route('account') }}" class="px-4 py-2 hover:bg-gray-100 flex">
             <div class="text-gray-800">
                 <i class="fas fa-user"></i>
