@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
-    <link rel="manifest" href="/icon/site.webmanifest">
-    <link rel="mask-icon" href="/icon/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="/icon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ Storage::disk('assets')->url('meta/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ Storage::disk('assets')->url('/meta/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ Storage::disk('assets')->url('/meta/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ Storage::disk('assets')->url('/meta/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ Storage::disk('assets')->url('/meta/safari-pinned-tab.svg') }}" color="#5bbad5">
+    <link rel="shortcut icon" href="{{ Storage::disk('assets')->url('/meta/favicon.ico') }}">
     <meta name="msapplication-TileColor" content="#2d89ef">
-    <meta name="msapplication-config" content="/icon/browserconfig.xml">
-    <meta name="theme-color" content="#ff0000">
+    <meta name="msapplication-config" content="{{ Storage::disk('assets')->url('/meta/browserconfig.xml') }}">
+    <meta name="theme-color" content="#005ea4">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
