@@ -14,7 +14,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.4",
+        "php": "^8.0",
         "ext-intl": "*",
         "ext-json": "*",
         "discord/interactions": "^1.0",
@@ -27,7 +27,7 @@
         "laravel/tinker": "^2.5",
         "maatwebsite/excel": "^3.1",
         "macsidigital/laravel-zoom": "^4.1",
-        "skyraptor/restcord": "dev-guzzle-7",
+        "restcord/restcord": "dev-develop",
         "spatie/laravel-translatable": "^4.6"
     },
     "require-dev": {
