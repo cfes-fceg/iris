@@ -17,6 +17,7 @@
         "php": "^8.0",
         "ext-intl": "*",
         "ext-json": "*",
+        "aws/aws-sdk-php": "^3.186",
         "discord/interactions": "^1.0",
         "fakerphp/faker": "^1.9.1",
         "fideloper/proxy": "^4.4",
