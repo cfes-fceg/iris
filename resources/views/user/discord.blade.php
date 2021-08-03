@@ -39,7 +39,7 @@
                         </span>
                         <div class="rounded bg-gray-600 p-2 flex flex-row items-center text-gray-300">
                             <pre
-                                class="text-sm w-full text-center font-bold px-2">/ucon register {{ Auth::user()->discord_registration_id }}</pre>
+                                class="text-sm w-full text-center font-bold px-2">/iris register {{ Auth::user()->discord_registration_id }}</pre>
                         </div>
                     </div>
                 </div>

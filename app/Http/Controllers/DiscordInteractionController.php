@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Support\Discord\Client;
 use Discord\InteractionResponseType;
 use Illuminate\Http\Request;
+use Log;
 
 class DiscordInteractionController extends Controller
 {
@@ -18,6 +19,7 @@ class DiscordInteractionController extends Controller
             $this->discordClient->validateSignature($request);
             return $this->processRequest($request);
         } catch (\Exception $e) {
+            Log::error($e);
             return response()->json($this->discordClient->createInteractionResponseMessage("Sorry, something went wrong there. If you continue to see this message, contact an admin."));
         }
     }

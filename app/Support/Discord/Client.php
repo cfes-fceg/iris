@@ -24,7 +24,7 @@ class Client
 //    private const LIST_GUILD_ROLES = self::API_BASE_URI . "guilds/:guild_id/roles";
 
     private const CONFERENCE_COMMAND = [
-        "name" => "uCon",
+        "name" => "iris",
         "options" => [
             [
                 "name" => "register",
@@ -33,7 +33,7 @@ class Client
                 "options" => [
                     [
                         "name" => "user-code",
-                        "description" => "Unique access code provided in your µConference account",
+                        "description" => "Unique access code provided in your IRIS account",
                         "type" => 3,
                         "required" => true
                     ]
@@ -175,7 +175,7 @@ class Client
     public function createInteractionResponseMessage($message): array
     {
         return [
-            "type" => InteractionResponseType::CHANNEL_MESSAGE,
+            "type" => InteractionResponseType::CHANNEL_MESSAGE_WITH_SOURCE,
             "data" => [
                 "content" => $message
             ]
