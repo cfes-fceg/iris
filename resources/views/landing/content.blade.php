@@ -10,7 +10,7 @@
         <p
             class="leading-normal text-gray-800 text-base md:text-xl lg:text-2xl mb-8 px-10"
         >
-            {{ __('Welcome to the 2021 Canadian Engineering Leadership Conference, hosted by the Zoom University Undergraduate Engineering Society') }}
+            {{ __('Welcome to') }} {{ config('app.name') }}!
         </p>
 
         @guest
