@@ -26,7 +26,8 @@ class Session extends Model
         'end',
         'zoom_meeting_id',
         'is_published',
-        'session_stream_id'
+        'session_stream_id',
+        'sync_zoom_meeting'
     ];
 
     protected $casts = [
