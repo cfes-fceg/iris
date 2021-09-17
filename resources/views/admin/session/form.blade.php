@@ -95,9 +95,9 @@
                     </label>
 
                     @error('is_published')
-                    <span class="text-red-600">
-                        {{ $message }}
-                    </span>
+                        <span class="text-red-600">
+                            {{ $message }}
+                        </span>
                     @enderror
                 </div>
                 @if(!isset($session))
@@ -107,16 +107,35 @@
                                    class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                    name="create_meeting"
                                    @if(old('create_meeting'))
-                                   checked="checked"
-                                @endif
+                                        checked="checked"
+                                   @endif
                             >
                             <span class="ml-2 text-sm text-gray-600">{{ __('Create a zoom meeting?') }}</span>
                         </label>
 
                         @error('create_meeting')
-                        <span class="text-red-600">
-                        {{ $message }}
-                    </span>
+                            <span class="text-red-600">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+                @else
+                    <div class="block mt-4">
+                        <label for="sync_zoom_meeting" class="inline-flex items-center">
+                            <input id="sync_zoom_meeting" type="checkbox"
+                                   class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                   name="sync_zoom_meeting"
+                                   @if(old('sync_zoom_meeting'))
+                                        checked="checked"
+                                   @endif
+                            >
+                            <span class="ml-2 text-sm text-gray-600">{{ __('Sync Zoom Meeting') }}</span>
+                        </label>
+
+                        @error('sync_zoom_meeting')
+                            <span class="text-red-600">
+                                {{ $message }}
+                            </span>
                         @enderror
                     </div>
                 @endif

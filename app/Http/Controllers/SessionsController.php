@@ -55,6 +55,7 @@ class SessionsController extends Controller
                 $session->stream->zoom_host,
             );
             $session->zoom_meeting_id = $meeting->id;
+            $session->sync_zoom_meeting = true;
         }
         $session->save();
         return \response()->redirectToRoute('admin.sessions.index');
@@ -81,7 +82,7 @@ class SessionsController extends Controller
     public function update(UpdateRequest $request, Session $session)
     {
         $session->update($request->validated());
-        if (!empty($session->zoom_meeting_id)) {
+        if (!empty($session->zoom_meeting_id) && $session->sync_zoom_meeting) {
             $meeting = Zoom::updateMeeting(
                 $session->zoom_meeting_id,
                 config('app.name')." | " . $session->title,

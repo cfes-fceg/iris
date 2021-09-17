@@ -9,12 +9,14 @@ class UpdateRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge(['is_published' => $this->has('is_published')]);
+        $this->merge(['sync_zoom_meeting' => $this->has('sync_zoom_meeting')]);
     }
 
     public function rules()
     {
         return [
             'is_published' => ['boolean'],
+            'sync_zoom_meeting' => ['boolean'],
             'session_stream_id' => ['nullable', 'integer', 'exists:session_streams,id'],
             'title' => ['string', 'max:255'],
             'description' => ['string'],

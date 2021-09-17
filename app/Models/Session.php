@@ -64,6 +64,7 @@ class Session extends Model
                     $session->stream->zoom_host,
                 );
                 $session->zoom_meeting_id = $meeting->id;
+                $session->sync_zoom_meeting = true;
             }
         });
     }
